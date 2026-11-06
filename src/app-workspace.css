@@ -338,17 +338,6 @@
   color: #9bacb3;
   font-size: var(--fs-xs);
 }
-.ws-metrics {
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-}
-.ws-metric-content strong {
-  font-size: var(--fs-xl);
-  overflow-wrap: normal;
-  word-break: normal;
-}
-.ws-metric-content small {
-  font-size: var(--fs-2xs);
-}
 .overview-v2 .ws-metric {
   min-height: 115px;
 }

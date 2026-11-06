@@ -69,7 +69,7 @@ async function openView(page, route) {
 }
 
 // Cada verificação recebe a página e devolve uma lista de mensagens de violação.
-// Para novas verificações (ex.: estouro em .kpi-card), basta acrescentar um item.
+// Para novas verificações (ex.: estouro em .ws-metric), basta acrescentar um item.
 const checks = [
   {
     name: 'scrollWidth',
@@ -82,14 +82,13 @@ const checks = [
       }),
   },
   {
-    // Os cartões visíveis hoje são .ws-metric (workspace.css): a Tarefa 4 deve incluí-los
-    // aqui (hoje estouram 5px em 1440px, ex.: "R$ 480.301,52").
-    name: 'kpi-card',
+    // Cartões de indicadores (.ws-metric, workspace.css): nem o cartão nem o valor podem estourar.
+    name: 'ws-metric',
     run: (page) =>
       page.evaluate(() =>
-        [...document.querySelectorAll('.kpi-card')].flatMap((el, i) =>
+        [...document.querySelectorAll('.ws-metric, .ws-metric-content strong')].flatMap((el, i) =>
           el.scrollWidth > el.clientWidth
-            ? ['.kpi-card #' + (i + 1) + ' scrollWidth ' + el.scrollWidth + ' > clientWidth ' + el.clientWidth]
+            ? [el.className + ' #' + (i + 1) + ' scrollWidth ' + el.scrollWidth + ' > clientWidth ' + el.clientWidth]
             : [],
         ),
       ),

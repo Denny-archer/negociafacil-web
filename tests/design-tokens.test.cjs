@@ -108,7 +108,7 @@ const fontWeights = (css) => propValues(css, 'font-weight');
 const lineHeights = (css) => propValues(css, 'line-height');
 
 // Arquivos com tipografia já migrada para tokens (Tarefas 4 e 5 acrescentam).
-const TYPO_MIGRATED = ['src/styles.css', 'src/app-workspace.css'];
+const TYPO_MIGRATED = ['src/styles.css', 'src/app-workspace.css', 'src/components/workspace.css'];
 
 function bodyOf(css) {
   // ignora o bloco :root, que declara os próprios tokens
