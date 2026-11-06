@@ -7,3 +7,4 @@ dist/
 !.env.example
 .openai/
 docs/plans/capturas/
+graphify-out/
