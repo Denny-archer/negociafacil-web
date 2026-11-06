@@ -10,7 +10,8 @@
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "check": "npm run typecheck && npm test",
-    "test:parity": "node tests/browser-parity.cjs"
+    "test:parity": "node tests/browser-parity.cjs",
+    "capture": "node tests/visual-capture.cjs"
   },
   "dependencies": {
     "jspdf": "^4.2.1",
