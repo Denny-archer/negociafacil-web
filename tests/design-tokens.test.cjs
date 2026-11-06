@@ -108,7 +108,7 @@ const fontWeights = (css) => propValues(css, 'font-weight');
 const lineHeights = (css) => propValues(css, 'line-height');
 
 // Arquivos com tipografia já migrada para tokens (Tarefas 4 e 5 acrescentam).
-const TYPO_MIGRATED = ['src/styles.css', 'src/app-workspace.css', 'src/components/workspace.css'];
+const TYPO_MIGRATED = ['src/styles.css', 'src/app-workspace.css', 'src/components/workspace.css', 'src/components/charts.css', 'src/components/document-actions.css'];
 
 function bodyOf(css) {
   // ignora o bloco :root, que declara os próprios tokens
@@ -123,6 +123,15 @@ test('font-weight usa tokens', () => {
 });
 test('line-height usa tokens (exceto 1, 0 e normal)', () => {
   for (const f of TYPO_MIGRATED) for (const v of lineHeights(bodyOf(stripPrint(readCss(f))))) assert.match(v, /^(var\(--lh-[a-z]+\)|1|0|normal|inherit)$/, `${f}: ${v}`);
+});
+
+test('fill de texto de gráfico usa token', () => {
+  const css = readCss('src/components/charts.css');
+  for (const sel of ['chart-axis', 'chart-month']) {
+    const m = css.match(new RegExp('\\.' + sel + '\\s*\\{([^}]*)\\}'));
+    assert.ok(m, sel);
+    assert.match(m[1], /fill:\s*var\(--text-muted\)/, sel);
+  }
 });
 
 module.exports = { LOADED_CSS, contrast, rootTokens, tok, rootBlock, readCss, stripPrint, fontSizes, fontWeights, lineHeights };

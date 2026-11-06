@@ -108,6 +108,20 @@ const checks = [
         ),
       ),
   },
+  {
+    // Rótulos de eixo SVG (charts.css) devem ficar inteiros dentro do svg que os contém.
+    name: 'chart-axis',
+    run: (page) =>
+      page.evaluate(() =>
+        [...document.querySelectorAll('svg text.chart-axis')].flatMap((el, i) => {
+          const t = el.getBoundingClientRect();
+          const s = el.ownerSVGElement.getBoundingClientRect();
+          if (!t.width) return [];
+          const out = Math.max(s.left - t.left, t.right - s.right, s.top - t.top, t.bottom - s.bottom);
+          return out > 0.5 ? ['"' + el.textContent + '" #' + (i + 1) + ' fora do svg em ' + Math.round(out) + 'px'] : [];
+        }),
+      ),
+  },
 ];
 
 async function capture(page, label, viewport, violations) {
