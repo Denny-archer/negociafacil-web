@@ -139,14 +139,38 @@
   color: var(--text-muted);
   margin-top: 6px;
 }
+/* Grade de indicadores ajustada à quantidade de cards: a linha sempre fecha a largura. */
+@media (min-width: 601px) and (max-width: 1199px) {
+  .ws-metrics > .ws-metric:last-child:nth-child(3n + 1) {
+    grid-column: 1/-1;
+  }
+}
 @media (min-width: 901px) and (max-width: 1199px) {
   .ws-metrics {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .ws-metrics:not(:has(> :nth-child(4))) {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
   }
 }
 @media (min-width: 1200px) {
   .ws-metrics {
     grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  /* Até 5 cards: uma linha só, dividida igualmente. */
+  .ws-metrics:not(:has(> :nth-child(6))) {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+  }
+  /* 10 cards: 5 + 5 em vez de 6 + 4. */
+  .ws-metrics:has(> :nth-child(10):last-child) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .ws-metrics > .ws-metric:last-child:nth-child(6n + 1) {
+    grid-column: 1/-1;
   }
   .ws-metric {
     flex-direction: column;
@@ -386,18 +410,28 @@
   padding: 4px 7px;
   border-radius: 5px;
   line-height: var(--lh-body);
-  max-width: 190px;
-  white-space: nowrap;
+  max-width: 100%;
+  /* Quebra só entre palavras: nunca no meio da palavra, nunca além da célula. */
+  align-items: flex-start;
+  white-space: normal;
   overflow-wrap: normal;
+  word-break: normal;
   background: #edf4fc;
   color: var(--info-text);
 }
 .ws-chip i {
   width: 4px;
   height: 4px;
+  /* Centraliza o ponto na primeira linha do rótulo (12px × 1.5 = 18px de linha). */
+  margin-top: calc(0.75em - 2px);
   border-radius: 50%;
   background: currentColor;
   flex-shrink: 0;
+}
+/* Coluna de status: largura para rótulos de até duas linhas sem espremer. */
+.ws-table td:has(.ws-chip) {
+  min-width: 13rem;
+  max-width: 16rem;
 }
 .ws-chip-green {
   background: #ebf6f0;

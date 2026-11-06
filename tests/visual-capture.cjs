@@ -98,6 +98,52 @@ const checks = [
       ),
   },
   {
+    // Nenhum conteúdo de célula pode passar da borda da própria célula (invadiria a coluna vizinha).
+    name: 'td-overflow',
+    run: (page) =>
+      page.evaluate(() => {
+        const found = new Map();
+        for (const cell of document.querySelectorAll('td')) {
+          const box = cell.getBoundingClientRect();
+          for (const el of cell.querySelectorAll('*')) {
+            const r = el.getBoundingClientRect();
+            if (!r.width) continue;
+            const over = Math.max(r.right - box.right, box.left - r.left);
+            if (over <= 0.5 && el.scrollWidth <= el.clientWidth + 0.5) continue;
+            const key = (el.getAttribute('class') || el.tagName.toLowerCase()) + ': "' + el.textContent.trim().slice(0, 40) + '"';
+            found.set(key, Math.max(found.get(key) || 0, Math.round(over)));
+          }
+        }
+        return [...found].map(([key, over]) => 'conteúdo passa da célula (' + over + 'px) — ' + key);
+      }),
+  },
+  {
+    // Grade de indicadores: a primeira linha ocupa toda a largura e nenhuma linha final fica com um card solitário.
+    name: 'ws-metrics-fill',
+    run: (page) =>
+      page.evaluate(() =>
+        [...document.querySelectorAll('.ws-metrics')].flatMap((grid, g) => {
+          const cards = [...grid.children].filter((el) => el.getBoundingClientRect().width);
+          if (cards.length < 2) return [];
+          const gridBox = grid.getBoundingClientRect();
+          const rows = new Map();
+          for (const card of cards) {
+            const top = Math.round(card.getBoundingClientRect().top);
+            rows.set(top, [...(rows.get(top) || []), card]);
+          }
+          const list = [...rows.values()];
+          const out = [];
+          const rightOf = (row) => Math.max(...row.map((c) => c.getBoundingClientRect().right));
+          if (rightOf(list[0]) < gridBox.right - 1)
+            out.push('.ws-metrics #' + (g + 1) + ': primeira linha deixa ' + Math.round(gridBox.right - rightOf(list[0])) + 'px vazios');
+          const last = list[list.length - 1];
+          if (list.length > 1 && last.length === 1 && rightOf(last) < gridBox.right - 1)
+            out.push('.ws-metrics #' + (g + 1) + ': card solitário na última linha (' + cards.length + ' cards)');
+          return out;
+        }),
+      ),
+  },
+  {
     // Cartões de indicadores (.ws-metric, workspace.css): nem o cartão nem o valor podem estourar.
     name: 'ws-metric',
     run: (page) =>
