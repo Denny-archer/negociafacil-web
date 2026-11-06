@@ -14,13 +14,13 @@ interface Props {
   onNavigate(view: ViewId): void;
 }
 
-const palette = [
+const compositionColors = [
+  'var(--chart-blue-deep)',
+  'var(--chart-turquoise)',
   'var(--chart-blue)',
-  'var(--chart-rose)',
-  '#7a6aa8',
   'var(--chart-mint)',
   'var(--chart-gold)',
-  'var(--navy)',
+  'var(--chart-slate)',
 ];
 
 const norm = (value: string) =>
@@ -269,7 +269,6 @@ export default function Overview({ context, onDrill, onNavigate }: Props) {
               <i
                 style={{
                   width: `${values[index] / max * 100}%`,
-                  background: palette[index % palette.length],
                 }}
               />
             </span>
@@ -373,7 +372,7 @@ export default function Overview({ context, onDrill, onNavigate }: Props) {
             segments={categoryGroups.map((group, index) => ({
               label: group.label,
               value: group.records.length,
-              color: palette[index % palette.length],
+              color: compositionColors[index % compositionColors.length],
             }))}
             centerValue={number(openDebts.length)}
             centerLabel="débitos"

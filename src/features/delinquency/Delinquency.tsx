@@ -34,6 +34,13 @@ const dimensionLabels: Record<DebtDimension, string> = {
   protest: 'Protesto',
 };
 
+const groupColors = [
+  'var(--chart-blue)',
+  'var(--chart-turquoise)',
+  'var(--chart-petrol)',
+  'var(--chart-mint)',
+];
+
 function Groups({
   rows,
   field,
@@ -74,7 +81,7 @@ function Groups({
             <i
               style={{
                 width: `${(population.length / max) * 100}%`,
-                background: ['var(--chart-blue)', 'var(--chart-rose)', '#7a6aa8', 'var(--chart-mint)'][index % 4],
+                background: groupColors[index % groupColors.length],
               }}
             />
           </span>

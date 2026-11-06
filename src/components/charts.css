@@ -63,7 +63,7 @@
 }
 
 .chart-grid {
-  stroke: #edf0f3;
+  stroke: var(--border);
   stroke-width: 1;
 }
 
@@ -75,12 +75,12 @@
 }
 
 .chart-month { fill: var(--text-muted); font-size: var(--fs-2xs); }
-.chart-baseline { stroke: #dfe5eb; stroke-width: 1; }
-.chart-active-column { fill: #f0f5f9; }
+.chart-baseline { stroke: var(--chart-axis); stroke-width: 1; }
+.chart-active-column { fill: var(--text-muted); }
 .chart-bars rect:not(.chart-active-column) { transition: opacity 140ms ease; }
 .chart-bars-active rect:not(.chart-active-column) { opacity: 0.9; }
 .chart-rate-line { fill: none; stroke: var(--navy); stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
-.chart-rate-dot { fill: var(--navy); stroke: #fff; stroke-width: 0.5; transition: r 140ms ease; }
+.chart-rate-dot { fill: var(--navy); stroke: var(--on-dark); stroke-width: 0.5; transition: r 140ms ease; }
 
 .chart-hit-target {
   position: absolute;
@@ -94,7 +94,7 @@
 }
 
 .chart-hit-clickable { cursor: pointer; }
-.chart-hit-target:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 1px; background: rgb(92 148 188 / 4%); }
+.chart-hit-target:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 1px; background: color-mix(in srgb, var(--primary) 4%, transparent); }
 
 .chart-tooltip {
   position: absolute;
@@ -102,10 +102,10 @@
   z-index: 5;
   box-sizing: border-box;
   padding: 10px 11px;
-  border: 1px solid #e5ebf1;
+  border: 1px solid var(--teal-border);
   border-radius: 9px;
-  background: rgb(255 255 255 / 97%);
-  box-shadow: 0 5px 20px rgb(24 55 84 / 12%);
+  background: color-mix(in srgb, var(--surface-card) 97%, transparent);
+  box-shadow: 0 5px 20px color-mix(in srgb, var(--navy) 12%, transparent);
   color: var(--text-secondary);
   font-size: var(--fs-sm);
   pointer-events: none;
@@ -129,9 +129,9 @@
 }
 
 .chart-empty-bars { display: flex; height: 30px; align-items: flex-end; gap: 5px; }
-.chart-empty-bars i { display: block; width: 10px; border-radius: 3px 3px 0 0; background: #e5eef5; height: 16px; }
-.chart-empty-bars i:nth-child(2) { height: 29px; background: #dae9f4; }
-.chart-empty-bars i:nth-child(3) { height: 22px; background: #f0dce5; }
+.chart-empty-bars i { display: block; width: 10px; border-radius: 3px 3px 0 0; background: var(--teal-soft); height: 16px; }
+.chart-empty-bars i:nth-child(2) { height: 29px; background: var(--blue-soft); }
+.chart-empty-bars i:nth-child(3) { height: 22px; background: var(--danger-soft); }
 .chart-combo-money .chart-empty { min-height: 130px; }
 
 .donut-layout {
@@ -157,7 +157,7 @@
 }
 
 .donut-svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; overflow: visible; }
-.donut-track { stroke: #f0f3f7; }
+.donut-track { stroke: var(--chart-track); }
 .donut-segment { transition: opacity 150ms ease, stroke-width 150ms ease; }
 .donut-segment-clickable { cursor: pointer; }
 .donut-segment-active { stroke-width: 28px; }
@@ -203,7 +203,7 @@
 .donut-legend-dot { width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; }
 .donut-legend-item span { min-width: 0; flex: 1 1 auto; overflow-wrap: anywhere; }
 .donut-legend-item b { flex: 0 0 auto; margin-left: auto; color: var(--text-strong); font-size: var(--fs-xs); font-weight: var(--fw-semibold); white-space: nowrap; }
-.donut-legend-item-active { background: #f5f8fb; color: var(--text-secondary); }
+.donut-legend-item-active { background: var(--surface-subtle); color: var(--text-secondary); }
 .donut-legend-item:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
 
 .donut-tooltip {
@@ -217,11 +217,11 @@
   width: max-content;
   max-width: 220px;
   padding: 7px 10px;
-  border: 1px solid #e5ebf1;
+  border: 1px solid var(--teal-border);
   border-radius: 8px;
-  background: rgb(255 255 255 / 97%);
+  background: color-mix(in srgb, var(--surface-card) 97%, transparent);
   color: var(--text-muted);
-  box-shadow: 0 4px 16px rgb(24 55 84 / 10%);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--navy) 10%, transparent);
   transform: translate(-50%, -30%);
   font-size: var(--fs-sm);
   text-align: center;

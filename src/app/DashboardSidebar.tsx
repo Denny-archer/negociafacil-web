@@ -7,9 +7,9 @@ function Brand() {
   return (
     <div className="brand-mark">
       <svg viewBox="0 0 43 43" aria-hidden="true">
-        <path d="M33 7A18 18 0 1 0 33 36" fill="none" stroke="#325d75" strokeWidth="2.6" />
-        <path d="M30 12A12 12 0 1 0 30 31" fill="none" stroke="#5ba898" strokeWidth="2.6" />
-        <path d="M27 17a6 6 0 1 0 0 9" fill="none" stroke="#325d75" strokeWidth="2.6" />
+        <path d="M33 7A18 18 0 1 0 33 36" fill="none" stroke="currentColor" strokeWidth="2.6" />
+        <path d="M30 12A12 12 0 1 0 30 31" fill="none" stroke="var(--turquoise-light)" strokeWidth="2.6" />
+        <path d="M27 17a6 6 0 1 0 0 9" fill="none" stroke="currentColor" strokeWidth="2.6" />
       </svg>
       <div>
         <strong>CREFITO-11</strong>

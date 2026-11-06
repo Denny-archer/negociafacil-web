@@ -38,9 +38,9 @@
   align-items: center;
   justify-content: center;
   gap: 7px;
-  border: 1px solid #e3eaf0;
+  border: 1px solid var(--teal-border);
   border-radius: 7px;
-  background: #fff;
+  background: var(--surface-card);
   padding: 9px 12px;
   color: var(--text-muted);
   font: inherit;
@@ -49,13 +49,13 @@
   cursor: pointer;
 }
 .ws-outline-button:hover {
-  background: #f5f9fc;
+  background: var(--surface-subtle);
 }
 .ws-panel {
-  background: #fffefe;
-  border: 1px solid #e8ecea;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
   border-radius: 11px;
-  box-shadow: 0 2px 7px #193b4d03;
+  box-shadow: 0 2px 7px color-mix(in srgb, var(--navy) 1%, transparent);
   min-width: 0;
 }
 .ws-metrics {
@@ -74,15 +74,16 @@
   min-height: 107px;
   min-width: 0;
   overflow: hidden;
-  border: 1px solid #ffffff99;
+  border: 1px solid var(--border);
   border-radius: 11px;
-  background: #edf4fc;
-  color: var(--chart-blue);
+  background: var(--surface-card);
+  color: var(--info-text);
   cursor: pointer;
 }
 .ws-metric:hover:not(:disabled) {
+  border-color: var(--primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 14px #294f6810;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--navy) 6%, transparent);
 }
 .ws-metric:disabled {
   cursor: default;
@@ -90,28 +91,28 @@
 }
 .ws-metric-green,
 .ws-metric-mint {
-  background: #edf8f3;
-  color: var(--chart-mint);
+  color: var(--success-text);
 }
 .ws-metric-purple,
 .ws-metric-lavender {
-  background: #f3effb;
   color: var(--accent-text);
 }
 .ws-metric-pink,
 .ws-metric-peach {
-  background: #fcf0f3;
-  color: var(--chart-rose);
+  color: var(--danger-text);
 }
 .ws-metric-orange,
 .ws-metric-amber {
-  background: #fff4e8;
-  color: var(--chart-gold);
+  color: var(--warning-text);
 }
 .ws-metric-icon {
   padding-top: 1px;
 }
 .ws-metric-icon svg {
+  --metric-icon-bg: color-mix(in srgb, currentColor 12%, var(--surface-card));
+  background: var(--metric-icon-bg);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--metric-icon-bg);
   stroke-width: 1.65;
 }
 .ws-metric-content {
@@ -237,8 +238,8 @@
   gap: 8px;
   flex: 0 1 330px;
   min-width: 0;
-  border: 1px solid #e6edf3;
-  background: #fcfdff;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-card);
   border-radius: 7px;
   padding: 10px;
   color: var(--text-muted);
@@ -296,10 +297,10 @@
   font-size: var(--fs-xs);
   white-space: nowrap;
   font-weight: var(--fw-semibold);
-  color: var(--text-muted);
-  background: #fafcfe;
-  border-top: 1px solid #edf1f5;
-  border-bottom: 1px solid #edf1f5;
+  color: var(--text-strong);
+  background: var(--surface-muted);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   padding: 12px 10px;
 }
 .ws-table th:first-child,
@@ -309,7 +310,7 @@
 .ws-table td {
   vertical-align: middle;
   padding: 14px 10px;
-  border-bottom: 1px solid #eff3f6;
+  border-bottom: 1px solid var(--border);
   color: var(--text-muted);
   line-height: var(--lh-body);
   max-width: 190px;
@@ -322,7 +323,7 @@
   cursor: pointer;
 }
 .ws-table tbody tr:hover {
-  background: #f8fbfe;
+  background: var(--blue-hover);
 }
 .ws-table tr:last-child td {
   border-bottom: 0;
@@ -346,7 +347,7 @@
   width: 31px;
   height: 31px;
   border-radius: 9px;
-  background: #f0f3fb;
+  background: var(--surface-subtle);
   color: var(--text-secondary);
   font-size: var(--fs-xs);
   flex-shrink: 0;
@@ -415,7 +416,7 @@
   white-space: normal;
   overflow-wrap: normal;
   word-break: normal;
-  background: #edf4fc;
+  background: var(--status-info-bg);
   color: var(--info-text);
 }
 .ws-chip i {
@@ -433,19 +434,19 @@
   max-width: 16rem;
 }
 .ws-chip-green {
-  background: #ebf6f0;
+  background: var(--status-success-bg);
   color: var(--success-text);
 }
 .ws-chip-pink {
-  background: #fcedf2;
-  color: var(--accent-text);
+  background: var(--status-danger-bg);
+  color: var(--danger-text);
 }
 .ws-chip-purple {
-  background: #f3effb;
+  background: var(--status-review-bg);
   color: var(--accent-text);
 }
 .ws-chip-orange {
-  background: #fff2e6;
+  background: var(--status-warning-bg);
   color: var(--warning-text);
 }
 .ws-alerts {
@@ -456,7 +457,7 @@
 }
 .ws-alert {
   display: inline-block;
-  background: #fbf0f4;
+  background: var(--status-danger-bg);
   color: var(--danger-text);
   border-radius: 3px;
   padding: 2px 5px;
@@ -464,12 +465,20 @@
   line-height: var(--lh-body);
 }
 .ws-alert-purple {
-  background: #f3effa;
+  background: var(--status-review-bg);
   color: var(--accent-text);
 }
 .ws-alert-blue {
-  background: #edf5fc;
+  background: var(--status-info-bg);
   color: var(--info-text);
+}
+.ws-alert-orange {
+  background: var(--status-warning-bg);
+  color: var(--warning-text);
+}
+.ws-alert-green {
+  background: var(--status-success-bg);
+  color: var(--success-text);
 }
 .ws-missing {
   font-size: inherit;
@@ -482,7 +491,7 @@
   margin-top: 3px;
 }
 .ws-priority-pink {
-  color: var(--accent-text);
+  color: var(--danger-text);
 }
 .ws-open {
   display: flex;
@@ -490,7 +499,7 @@
   justify-content: center;
   padding: 5px;
   border-radius: 5px;
-  background: #f3f7fb;
+  background: var(--surface-subtle);
   color: var(--info-text);
 }
 .ws-pagination {
@@ -499,7 +508,7 @@
   justify-content: space-between;
   gap: 12px;
   padding: 15px 20px;
-  border-top: 1px solid #edf1f5;
+  border-top: 1px solid var(--border);
   font-size: var(--fs-xs);
   color: var(--text-muted);
 }
@@ -515,8 +524,8 @@
   margin-right: 5px;
 }
 .ws-pagination select {
-  background: #fff;
-  border: 1px solid #e7edf3;
+  background: var(--surface-card);
+  border: 1px solid var(--border-strong);
   border-radius: 4px;
   padding: 4px;
   color: var(--text-muted);
@@ -525,9 +534,9 @@
 .ws-pagination button {
   display: flex;
   padding: 4px;
-  border: 1px solid #e7edf3;
+  border: 1px solid var(--border-strong);
   border-radius: 5px;
-  background: #fff;
+  background: var(--surface-card);
   color: var(--text-muted);
 }
 .ws-pagination button:disabled {
@@ -561,8 +570,8 @@
   display: flex;
   align-items: flex-start;
   gap: 9px;
-  background: #f5f9fd;
-  border: 1px solid #edf3f8;
+  background: var(--surface-subtle);
+  border: 1px solid var(--teal-border);
   border-radius: 8px;
   padding: 12px 14px;
   color: var(--text-muted);
@@ -582,7 +591,7 @@
 .ws-tabs {
   display: flex;
   gap: 20px;
-  border-bottom: 1px solid #edf1f5;
+  border-bottom: 1px solid var(--border);
   overflow: auto;
   scrollbar-width: thin;
   padding: 0 20px;
@@ -610,16 +619,16 @@
   border-radius: 4px;
   padding: 2px 5px;
   font-size: var(--fs-2xs);
-  background: #f2f5f8;
+  background: var(--surface-subtle);
   color: var(--text-muted);
 }
 .ws-tabs button.active {
-  border-bottom-color: #6998bb;
+  border-bottom-color: var(--primary);
   color: var(--info-text);
   font-weight: var(--fw-semibold);
 }
 .ws-tabs button.active span {
-  background: #ecf3fb;
+  background: var(--status-info-bg);
   color: var(--info-text);
 }
 .ws-demand-tabs {
@@ -631,8 +640,8 @@
   flex-wrap: wrap;
   gap: 14px;
   padding: 13px 20px;
-  background: #fcfdff;
-  border-bottom: 1px solid #f0f3f7;
+  background: var(--surface-card);
+  border-bottom: 1px solid var(--border);
   color: var(--text-muted);
 }
 .ws-local-filter label,
@@ -646,10 +655,10 @@
 .ws-local-filter select,
 .ws-select-label select {
   max-width: 210px;
-  border: 1px solid #e3eaf2;
+  border: 1px solid var(--border-strong);
   padding: 7px 10px;
   border-radius: 6px;
-  background: #fff;
+  background: var(--surface-card);
   color: var(--text-muted);
   font: inherit;
   font-size: var(--fs-xs);
@@ -663,14 +672,14 @@
   white-space: nowrap;
 }
 .ws-checkbox input {
-  accent-color: #759bb9;
+  accent-color: var(--primary);
   width: 12px;
   height: 12px;
 }
 .ws-section-heading > .ws-count-badge {
   display: inline-flex;
   font-size: var(--fs-2xs);
-  background: #eff5fb;
+  background: var(--teal-soft);
   color: var(--info-text);
   padding: 5px 8px;
   border-radius: 5px;
@@ -712,8 +721,8 @@
 }
 .ws-group-track {
   height: 12px;
-  background: #fbfcfd;
-  border-bottom: 1px solid #f1f4f7;
+  background: var(--surface-card);
+  border-bottom: 1px solid var(--border);
 }
 .ws-group-track i {
   display: block;
@@ -745,8 +754,8 @@
   gap: 7px;
   margin-bottom: 16px;
   padding: 5px;
-  background: #f0f4f8;
-  border: 1px solid #eaf0f5;
+  background: var(--surface-subtle);
+  border: 1px solid var(--teal-border);
   border-radius: 8px;
   width: max-content;
   max-width: 100%;
@@ -763,9 +772,9 @@
   font-size: var(--fs-xs);
 }
 .ws-switch button.active {
-  background: #fff;
-  color: var(--text-secondary);
-  box-shadow: 0 1px 5px #26455d09;
+  background: var(--status-info-bg);
+  color: var(--info-text);
+  box-shadow: 0 1px 5px color-mix(in srgb, var(--navy) 4%, transparent);
 }
 .ws-switch button span {
   font-size: var(--fs-2xs);
@@ -827,7 +836,7 @@
   align-items: center;
   color: var(--text-muted);
   font-size: var(--fs-xs);
-  border-top: 1px solid #edf2f6;
+  border-top: 1px solid var(--border);
   padding-top: 12px;
 }
 /* Relatórios e comparação */
@@ -843,9 +852,9 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  border: 1px solid #e5ecf2;
+  border: 1px solid var(--teal-border);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface-card);
   padding: 15px 13px;
   text-align: left;
   color: var(--text-muted);
@@ -862,9 +871,9 @@
   line-height: var(--lh-body);
 }
 .ws-report-choices > button.active {
-  background: #f3f8fe;
-  border-color: #acc6e1;
-  box-shadow: 0 0 0 1px #e6f0fa;
+  background: var(--blue-hover);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
 }
 .ws-report-check {
   position: absolute;
@@ -882,10 +891,10 @@
   padding: 0 20px;
 }
 .ws-comparison-grid > button {
-  border: 1px solid #e6edf4;
+  border: 1px solid var(--teal-border);
   border-radius: 8px;
   padding: 16px;
-  background: #f8fbfe;
+  background: var(--surface-card);
   text-align: left;
   color: var(--text-muted);
   font: inherit;
@@ -917,7 +926,7 @@
   justify-content: center;
   flex-direction: column;
   gap: 9px;
-  background: #f0f7f3;
+  background: var(--surface-subtle);
   border-radius: 8px;
   color: var(--success-text);
   text-align: center;
@@ -951,7 +960,7 @@
   justify-content: space-between;
   gap: 13px;
   padding: 16px 0;
-  border-bottom: 1px solid #eef2f6;
+  border-bottom: 1px solid var(--border);
   font-size: var(--fs-xs);
   color: var(--text-muted);
 }
@@ -964,7 +973,7 @@
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
-  background: #fcf6ea;
+  background: var(--warning-soft);
   padding: 4px 7px;
   border-radius: 4px;
   font-size: var(--fs-2xs);
@@ -984,7 +993,7 @@
   gap: 8px;
   align-items: flex-start;
   padding: 13px;
-  background: #f8fbfd;
+  background: var(--surface-card);
   border-radius: 7px;
   color: var(--text-muted);
 }
@@ -1012,7 +1021,7 @@
 .ws-admin-locked > span {
   padding: 18px;
   border-radius: 15px;
-  background: #eff5fb;
+  background: var(--teal-soft);
   color: var(--info-text);
 }
 .ws-admin-locked h2 {
@@ -1053,8 +1062,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 15px;
-  background: #f1f8f5;
-  border: 1px solid #dfede7;
+  background: var(--surface-subtle);
+  border: 1px solid var(--teal-border);
   border-radius: 9px;
   padding: 17px;
   margin: 20px 0;
@@ -1079,7 +1088,7 @@
 .ws-detail-tabs {
   display: flex;
   gap: 25px;
-  border-bottom: 1px solid #e7eef3;
+  border-bottom: 1px solid var(--teal-border);
   margin-bottom: 20px;
 }
 .ws-detail-tabs button {
@@ -1094,7 +1103,7 @@
   color: var(--text-muted);
 }
 .ws-detail-tabs button.active {
-  border-bottom-color: #7ca2bd;
+  border-bottom-color: var(--primary);
   color: var(--info-text);
 }
 .ws-detail-fields {
@@ -1137,8 +1146,8 @@
   align-items: center;
   gap: 12px;
   padding: 14px;
-  background: #fafcfe;
-  border: 1px solid #e7eef4;
+  background: var(--surface-card);
+  border: 1px solid var(--teal-border);
   border-radius: 8px;
   text-align: left;
   color: var(--text-muted);
@@ -1146,7 +1155,7 @@
 }
 .ws-link-icon {
   padding: 9px;
-  background: #eff5fa;
+  background: var(--teal-soft);
   border-radius: 7px;
 }
 .ws-link-list > button > span:nth-child(2) {
@@ -1171,7 +1180,7 @@
 .ws-timeline > div {
   position: relative;
   padding: 0 0 25px 24px;
-  border-left: 1px solid #dce9e6;
+  border-left: 1px solid var(--teal-border);
 }
 .ws-timeline > div:last-child {
   border-left: 0;
@@ -1183,8 +1192,8 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #b2d3c6;
-  box-shadow: 0 0 0 3px #f4faf7;
+  background: var(--success-soft);
+  box-shadow: 0 0 0 3px var(--navy);
 }
 .ws-timeline small {
   display: block;
@@ -1472,7 +1481,7 @@
   color: var(--text-muted);
 }
 .ws-installments {
-  border-top: 1px solid #e8eef2;
+  border-top: 1px solid var(--teal-border);
   padding: 18px 0 15px;
 }
 .ws-installments h3 {
@@ -1494,8 +1503,8 @@
   gap: 9px;
   align-items: flex-start;
   padding: 11px 12px;
-  border: 1px solid #e8eef3;
-  background: #f9fcfe;
+  border: 1px solid var(--teal-border);
+  background: var(--surface-card);
   border-radius: 7px;
   color: var(--text-muted);
   font-size: var(--fs-xs);
@@ -1526,7 +1535,7 @@
 }
 .ws-local-filter select:disabled {
   color: var(--text-muted);
-  background: #f8f9fa;
+  background: var(--surface-subtle);
 }
 /* Distribuição mensal */
 .ws-trend {
@@ -1545,8 +1554,8 @@
   min-width: 0;
   gap: 8px;
   padding: 12px;
-  background: #f8fbfe;
-  border: 1px solid #e9eff5;
+  background: var(--surface-card);
+  border: 1px solid var(--teal-border);
   border-radius: 7px;
   text-align: left;
   font: inherit;
@@ -1567,7 +1576,7 @@
 }
 .ws-trend-track {
   height: 5px;
-  background: #eaf1f8;
+  background: var(--chart-track);
   border-radius: 3px;
   overflow: hidden;
   margin-top: 4px;
@@ -1575,7 +1584,7 @@
 .ws-trend-track i {
   display: block;
   height: 100%;
-  background: #abc7de;
+  background: var(--chart-blue);
   border-radius: 3px;
 }
 .ws-trend-note {
@@ -1615,8 +1624,8 @@
   margin-top: 2px;
 }
 .ws-detail-operational {
-  background: #f2f6fb;
-  border-color: #e2eaf3;
+  background: var(--surface-subtle);
+  border-color: var(--teal-border);
 }
 .ws-detail-operational strong {
   font-size: var(--fs-sm);

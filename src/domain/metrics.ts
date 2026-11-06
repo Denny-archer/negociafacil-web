@@ -171,7 +171,7 @@ export function getMetrics(view: ViewId, context: QueryContext): Metric[] {
         'reais',
         'Saldo dos débitos, sem somar novamente valores de acordos, DA ou títulos.',
         money(sum(debts, 'amountCents')),
-        'green'
+        'purple'
       ),
       metric(
         'recovered',
@@ -196,7 +196,7 @@ export function getMetrics(view: ViewId, context: QueryContext): Metric[] {
         'acordos',
         'Atraso fornecido pelo cenário, incluindo primeira parcela vencida sem pagamento.',
         number(lateAgreements.length),
-        'orange'
+        'pink'
       ),
       pending('old-debts', 'Débitos antigos', 'O marco de antiguidade e as faixas ainda precisam ser homologados.'),
       metric(
@@ -211,7 +211,9 @@ export function getMetrics(view: ViewId, context: QueryContext): Metric[] {
         'Demandas pendentes',
         openDemands,
         'demandas',
-        'Demandas sem data de encerramento; regularização financeira não encerra a demanda.'
+        'Demandas sem data de encerramento; regularização financeira não encerra a demanda.',
+        undefined,
+        'orange'
       ),
       metric(
         'late-demands',
@@ -220,7 +222,7 @@ export function getMetrics(view: ViewId, context: QueryContext): Metric[] {
         'demandas',
         'Demandas abertas com prazo fornecido anterior à data-base fixa do cenário.',
         undefined,
-        'orange'
+        'pink'
       ),
       pending('goal', 'Meta institucional', 'Nenhuma meta institucional homologada foi fornecida.')
     ];

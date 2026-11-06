@@ -19,10 +19,10 @@
   align-items: center;
   justify-content: center;
   gap: 7px;
-  border: 1px solid #e0e7ef;
+  border: 1px solid var(--border-strong);
   border-radius: 7px;
   padding: 9px 11px;
-  background: #fff;
+  background: var(--surface-card);
   color: var(--text-secondary);
   font: inherit;
   font-size: var(--fs-xs);
@@ -36,8 +36,8 @@
   justify-content: center;
 }
 .doc-actions-button:hover:not(:disabled) {
-  background: #f5f9fc;
-  border-color: #b6c9dd;
+  background: var(--surface-subtle);
+  border-color: var(--primary);
 }
 .doc-actions-button:disabled {
   cursor: default;
@@ -58,10 +58,10 @@
   max-width: 390px;
   margin: 0;
   padding: 8px 10px;
-  border: 1px solid #efdae1;
+  border: 1px solid var(--danger-border);
   border-radius: 6px;
   color: var(--danger-text);
-  background: #fff6f8;
+  background: var(--danger-soft);
   font-size: var(--fs-xs);
   line-height: var(--lh-body);
 }

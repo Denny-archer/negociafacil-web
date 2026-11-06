@@ -65,8 +65,8 @@ export function ComboChart({ data, mode, onSelect, firstSeriesLabel, singleSerie
   const money = mode === 'money';
   const firstLabel = firstSeriesLabel || (money ? 'Arrecadação' : 'Total de inscritos');
   const secondLabel = money ? 'Valor em aberto' : 'Inadimplentes';
-  const firstColor = money ? 'var(--chart-mint)' : 'var(--chart-blue)';
-  const secondColor = 'var(--chart-rose)';
+  const firstColor = money ? 'var(--chart-turquoise)' : 'var(--chart-blue)';
+  const secondColor = 'var(--chart-gold)';
 
   useEffect(() => {
     const element = container.current;
@@ -117,7 +117,7 @@ export function ComboChart({ data, mode, onSelect, firstSeriesLabel, singleSerie
         <div className="chart-plot" style={{ height }} onMouseLeave={() => setActiveIndex(null)}>
           <svg className="chart-svg" viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
             <defs>
-              <linearGradient id={`${paintId}-first`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" style={{ stopColor: firstColor }} stopOpacity="0.75" /><stop offset="100%" style={{ stopColor: firstColor }} /></linearGradient>
+              <linearGradient id={`${paintId}-first`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" style={{ stopColor: firstColor }} stopOpacity="0.94" /><stop offset="100%" style={{ stopColor: firstColor }} /></linearGradient>
               <linearGradient id={`${paintId}-second`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" style={{ stopColor: secondColor }} stopOpacity="0.8" /><stop offset="100%" style={{ stopColor: secondColor }} /></linearGradient>
             </defs>
             {scale.ticks.map((tick) => (

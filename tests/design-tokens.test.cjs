@@ -73,7 +73,7 @@ test('pares de texto atingem 4.5:1', () => {
   for (const [fg, bg] of TEXT_PAIRS) assert.ok(contrast(tok(fg), tok(bg)) >= 4.5, `${fg} sobre ${bg}`);
 });
 test('marcas de gráfico atingem 3:1 sobre o card', () => {
-  for (const t of ['--chart-blue', '--chart-mint', '--chart-rose', '--chart-gold', '--navy']) assert.ok(contrast(tok(t), tok('--surface-card')) >= 3, t);
+  for (const t of ['--chart-blue', '--chart-blue-deep', '--chart-mint', '--chart-rose', '--chart-gold', '--chart-turquoise', '--chart-petrol', '--chart-slate', '--navy']) assert.ok(contrast(tok(t), tok('--surface-card')) >= 3, t);
 });
 test('modules.css não existe', () => assert.equal(fs.existsSync(path.join(ROOT, 'src/components/modules.css')), false));
 
@@ -162,25 +162,24 @@ test('color usa tokens (var/inherit/currentColor), fora de :root e @media print'
   }
 });
 
-// Cor de texto sobre o fundo literal da própria regra (chips tingidos): >= 4.5 (texto) ou 3 (ícones --chart-*).
-test('texto de status/neutro atinge contraste sobre o fundo literal da regra', () => {
+// Cor de texto sobre o fundo sólido da própria regra.
+test('texto de status/neutro atinge contraste sobre o fundo sólido da regra', () => {
   for (const f of LOADED_CSS) {
     for (const [sel, body] of rulesOf(readCss(f))) {
       const bgs = propValues(body, 'background').concat(propValues(body, 'background-color'));
-      const bg = bgs.map((b) => b.match(/^#[0-9a-f]{6}$/i)).find(Boolean);
+      const bg = bgs.map((b) => b.match(/^(#[0-9a-f]{6}|var\((--[\w-]+)\))$/i)).find(Boolean);
       const fg = propValues(body, 'color').map((v) => v.replace(/\s*!important$/, '').match(/^var\((--[\w-]+)\)$/)).find(Boolean);
       if (!bg || !fg) continue;
       const min = fg[1].startsWith('--chart-') ? 3 : 4.5;
-      const ratio = contrast(tok(fg[1]), bg[0]);
+      const ratio = contrast(tok(fg[1]), tok(bg[2] || bg[1]));
       assert.ok(ratio >= min, `${f}: ${sel} ${fg[1]} sobre ${bg[0]} = ${ratio.toFixed(2)} (< ${min})`);
     }
   }
 });
 
-// Texto branco: cada fundo hex (inclusive paradas de gradiente) das regras permitidas, e variantes
-// descendentes/:hover/:active, precisa dar >= 4.5:1 contra #fff.
+// Cada parada de fundo atrás de texto claro deve atingir 4.5:1.
 test('fundos atrás de texto branco atingem 4.5:1 contra #fff', () => {
-  const stops = (v) => [...v.matchAll(/#[0-9a-f]{6}\b/gi)].map((m) => m[0]);
+  const stops = (v) => [...v.matchAll(/#[0-9a-f]{6}\b|var\((--[\w-]+)\)/gi)].map((m) => tok(m[1] || m[0]));
   let checked = 0;
   for (const f of LOADED_CSS) {
     for (const [sel, body] of rulesOf(readCss(f))) {
@@ -208,12 +207,16 @@ test('pares de texto sobre fundo do pai atingem 4.5:1', () => {
   for (const [fg, bg] of PARENT_PAIRS) assert.ok(contrast(tok(fg), bg) >= 4.5, `${fg} sobre ${bg}`);
 });
 
-test('nav-item hover/ativo usa --text-strong', () => {
+test('navegação azul-marinho mantém contraste no texto e no foco', () => {
   const css = readCss('src/styles.css');
-  for (const sel of ['\\.nav-item:hover', '\\.nav-item\\.active', '\\.nav-item\\.active svg']) {
+  for (const sel of ['\\.nav-item', '\\.nav-item:hover', '\\.nav-item\\.active', '\\.nav-item\\.active svg']) {
     const m = css.match(new RegExp(sel + '\\s*\\{([^}]*)\\}'));
     assert.ok(m, sel);
-    assert.match(m[1], /color:\s*var\(--text-strong\)/, sel);
+    assert.equal(propValues(m[1], 'color')[0], 'var(--on-dark)', sel);
+  }
+  for (const bg of ['--navy', '--nav-hover', '--nav-active']) {
+    assert.ok(contrast(tok('--nav-secondary'), tok(bg)) >= 4.5, bg);
+    assert.ok(contrast(tok('--focus-on-dark'), tok(bg)) >= 3, bg);
   }
 });
 

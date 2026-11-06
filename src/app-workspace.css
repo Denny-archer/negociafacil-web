@@ -6,7 +6,7 @@
   margin: 1px 0 14px;
   padding: 8px 11px;
   border-radius: 8px;
-  background: #f2f5f5;
+  background: var(--surface-subtle);
   color: var(--text-muted);
   font-size: var(--fs-xs);
   flex-wrap: wrap;
@@ -19,9 +19,9 @@
 }
 .profile-preview select {
   padding: 5px 25px 5px 8px;
-  border: 1px solid #dfe7e9;
+  border: 1px solid var(--border-strong);
   border-radius: 5px;
-  background: white;
+  background: var(--surface-card);
   color: var(--text-secondary);
   font-size: var(--fs-xs);
 }
@@ -31,7 +31,7 @@
   gap: 5px;
 }
 .profile-preview input {
-  accent-color: #5b8da5;
+  accent-color: var(--primary);
 }
 .profile-preview small {
   margin-left: auto;
@@ -64,16 +64,16 @@
   gap: 7px;
   white-space: nowrap;
   padding: 11px;
-  border: 1px solid #e2e9ec;
+  border: 1px solid var(--border-strong);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface-card);
   color: var(--text-muted);
   font-size: var(--fs-xs);
 }
 .advanced-filter-button.is-active {
-  background: #eaf3f8;
-  color: var(--info-text);
-  border-color: #c6dbe6;
+  background: var(--status-info-bg);
+  color: var(--primary-deep);
+  border-color: var(--primary);
 }
 .workspace-filters .update-status {
   flex-basis: 135px;
@@ -83,15 +83,15 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 9px;
   padding: 14px;
-  background: #f6f9f9;
-  border: 1px solid #e3ecec;
+  background: var(--surface-subtle);
+  border: 1px solid var(--teal-border);
   border-radius: 10px;
   margin-bottom: 14px;
 }
 .advanced-filters .filter-control {
   max-width: none;
   width: 100%;
-  background: #fff;
+  background: var(--surface-card);
 }
 .advanced-filters p {
   grid-column: 1/-1;
@@ -104,12 +104,12 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  border: 1px solid #e0e9ef;
+  border: 1px solid var(--teal-border);
   border-radius: 10px;
   padding: 20px;
   margin: 15px 0;
   color: var(--text-muted);
-  background: #f4f8fc;
+  background: var(--surface-subtle);
 }
 .data-state > div {
   flex: 1;
@@ -126,17 +126,17 @@
   margin: 6px 0 0;
 }
 .data-state-error {
-  background: #fcf2ef;
+  background: var(--danger-soft);
   color: var(--danger-text);
-  border-color: #f0d9cf;
+  border-color: var(--danger-border);
 }
 .data-state-error strong {
   color: var(--danger-text);
 }
 .data-state-warning {
-  background: #fcf8ed;
+  background: var(--warning-soft);
   color: var(--warning-text);
-  border-color: #eae0be;
+  border-color: var(--warning-border);
 }
 .data-state-warning strong {
   color: var(--warning-text);
@@ -223,8 +223,8 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  background: repeating-linear-gradient(135deg, #f9faf8, #f9faf8 10px, #f5f7f5 10px, #f5f7f5 11px);
-  border: 1px dashed #dae4e1;
+  background: repeating-linear-gradient(135deg, var(--surface-subtle), var(--surface-subtle) 10px, var(--surface-subtle) 10px, var(--surface-subtle) 11px);
+  border: 1px dashed var(--teal-border);
   border-radius: 8px;
   padding: 20px;
   color: var(--text-muted);
@@ -259,14 +259,14 @@
 }
 .overview-bar-item > span:nth-child(2) {
   height: 13px;
-  background: #f1f4f5;
+  background: var(--chart-track);
   border-radius: 3px;
   overflow: hidden;
 }
 .overview-bar-item i {
   display: block;
   height: 100%;
-  background: #b4d3e8;
+  background: var(--chart-blue);
   border-radius: 3px;
 }
 .overview-bar-item > strong {
@@ -276,7 +276,7 @@
   font-weight: var(--fw-semibold);
 }
 .overview-bar-item:hover > span:nth-child(2) {
-  background: #e8eff3;
+  background: var(--blue-soft);
 }
 .attention-grid {
   display: grid;
@@ -290,9 +290,9 @@
   text-align: left;
   gap: 12px;
   padding: 14px 13px;
-  border: 1px solid #e6ecee;
+  border: 1px solid var(--teal-border);
   border-radius: 8px;
-  background: #fafcfc;
+  background: var(--surface-card);
 }
 .attention-item > span {
   flex: 1;
@@ -307,8 +307,9 @@
   color: var(--text-secondary);
 }
 .attention-item.urgent {
-  background: #fcf1ef;
-  border-color: #f0ded7;
+  background: var(--danger-soft);
+  border-color: var(--danger-border);
+  color: var(--danger-text);
 }
 .attention-item.urgent strong {
   color: var(--danger-text);
@@ -354,8 +355,8 @@
   flex-direction: column;
   gap: 8px;
   padding: 12px;
-  background: #f6f9fb;
-  border: 1px solid #e4edf2;
+  background: var(--surface-subtle);
+  border: 1px solid var(--teal-border);
   border-radius: 7px;
   text-align: left;
   color: var(--text-muted);
