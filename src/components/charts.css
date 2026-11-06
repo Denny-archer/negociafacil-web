@@ -94,7 +94,7 @@
 }
 
 .chart-hit-clickable { cursor: pointer; }
-.chart-hit-target:focus-visible { outline: 2px solid #487da8; outline-offset: 1px; background: rgb(92 148 188 / 4%); }
+.chart-hit-target:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 1px; background: rgb(92 148 188 / 4%); }
 
 .chart-tooltip {
   position: absolute;
@@ -204,7 +204,7 @@
 .donut-legend-item span { min-width: 0; flex: 1 1 auto; overflow-wrap: anywhere; }
 .donut-legend-item b { flex: 0 0 auto; margin-left: auto; color: var(--text-strong); font-size: var(--fs-xs); font-weight: var(--fw-semibold); white-space: nowrap; }
 .donut-legend-item-active { background: #f5f8fb; color: var(--text-secondary); }
-.donut-legend-item:focus-visible { outline: 2px solid #7ba5c6; outline-offset: 2px; }
+.donut-legend-item:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
 
 .donut-tooltip {
   position: absolute;

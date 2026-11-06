@@ -217,4 +217,23 @@ test('nav-item hover/ativo usa --text-strong', () => {
   }
 });
 
+test('--focus-ring atinge 3:1 sobre página e card', () => {
+  for (const bg of ['--surface-page', '--surface-card']) {
+    const ratio = contrast(tok('--focus-ring'), tok(bg));
+    assert.ok(ratio >= 3, `--focus-ring sobre ${bg} = ${ratio.toFixed(2)}`);
+  }
+});
+test('outline e box-shadow de foco usam var(--focus-ring)', () => {
+  for (const f of LOADED_CSS) {
+    const css = bodyOf(stripPrint(readCss(f)));
+    for (const m of css.matchAll(/([^{}]*:(?:focus-visible|focus-within)[^{}]*)\{([^}]*)\}/g)) {
+      for (const d of m[2].split(';')) {
+        if (/^\s*(outline|box-shadow|outline-color)\s*:/.test(d) && !/:\s*(none|0)\s*$/.test(d)) {
+          assert.match(d, /var\(--focus-ring\)/, `${f}: ${m[1].trim()} -> ${d.trim()}`);
+        }
+      }
+    }
+  }
+});
+
 module.exports = { LOADED_CSS, contrast, rootTokens, tok, rootBlock, readCss, stripPrint, fontSizes, fontWeights, lineHeights };

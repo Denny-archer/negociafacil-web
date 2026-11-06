@@ -47,7 +47,7 @@
   cursor: progress;
 }
 .doc-actions-button:focus-visible {
-  outline: 3px solid #8bb8df;
+  outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
 }
 .doc-actions-error {

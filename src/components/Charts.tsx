@@ -101,7 +101,7 @@ export function ComboChart({ data, mode, onSelect, firstSeriesLabel, singleSerie
   const active = activeIndex === null ? undefined : data[activeIndex];
   const activeValues = activeIndex === null ? undefined : values[activeIndex];
   const format = (value: number) => (money ? moneyFormat.format(value) : numberFormat.format(value));
-  const labelEvery = data.length > 0 && cell < 21 ? Math.ceil(21 / cell) : 1;
+  const labelEvery = data.length > 0 && cell < 28 ? Math.ceil(28 / cell) : 1;
   const tooltipWidth = 208;
   const tooltipLeft = activeIndex === null ? 0 : Math.max(4, Math.min(width - tooltipWidth - 4, left + cell * (activeIndex + 0.5) - tooltipWidth / 2));
 
