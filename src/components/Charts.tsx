@@ -85,7 +85,7 @@ export function ComboChart({ data, mode, onSelect, firstSeriesLabel, singleSerie
   }));
   const hasData = values.some((point) => point.first > 0 || point.second > 0 || point.rate > 0);
   const height = money ? 130 : 150;
-  const left = money ? 70 : 52;
+  const left = money ? 80 : 52;
   const right = 40;
   const top = 12;
   const bottom = 28;

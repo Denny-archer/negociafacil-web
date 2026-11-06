@@ -201,7 +201,7 @@ button:hover {
   position: relative;
 }
 .sidebar {
-  width: 145px;
+  width: max(145px, 9.5rem);
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -277,6 +277,7 @@ button:hover {
   font-size: var(--fs-md);
   font-weight: var(--fw-bold);
   letter-spacing: -0.5px;
+  white-space: nowrap;
 }
 .brand-mark span {
   font-size: var(--fs-2xs);
@@ -298,7 +299,8 @@ button:hover {
   padding-top: 11px;
   color: var(--text-muted);
   font-size: var(--fs-2xs);
-  white-space: nowrap;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .main-content {
   flex: 1;
@@ -308,6 +310,7 @@ button:hover {
 /* Filtros e atualização */
 .filters-bar {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   align-items: center;
   margin-bottom: 13px;
@@ -323,7 +326,7 @@ button:hover {
   box-shadow: 0 2px 4px #334e3f03;
   background: #ffffffb3;
   position: relative;
-  height: 44px;
+  min-height: 44px;
   padding: 5px 12px;
   gap: 10px;
   color: var(--text-muted);
@@ -346,7 +349,7 @@ button:hover {
   appearance: none;
   width: 100%;
   font-size: var(--fs-xs);
-  height: 17px;
+  min-height: 17px;
   padding: 0 14px 0 0;
   cursor: pointer;
   outline-offset: 6px;
@@ -1687,11 +1690,7 @@ button:hover {
     margin-top: 5px;
   }
   .demo-badge {
-    position: absolute;
-    top: 77px;
-    right: 25px;
     font-size: var(--fs-2xs);
-    z-index: 2;
     padding: 5px 7px;
   }
   .mobile-toggle {
@@ -1766,7 +1765,7 @@ button:hover {
   }
   .filter-control {
     flex-basis: 40%;
-    height: 46px;
+    min-height: 46px;
     max-width: none;
     padding-left: 11px;
   }
@@ -1775,7 +1774,7 @@ button:hover {
   }
   .filter-control select {
     font-size: var(--fs-sm);
-    height: 18px;
+    min-height: 18px;
   }
   .period-filter {
     max-width: none;
