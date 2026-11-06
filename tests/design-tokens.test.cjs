@@ -77,4 +77,52 @@ test('marcas de gráfico atingem 3:1 sobre o card', () => {
 });
 test('modules.css não existe', () => assert.equal(fs.existsSync(path.join(ROOT, 'src/components/modules.css')), false));
 
-module.exports = { LOADED_CSS, contrast, rootTokens, tok, rootBlock, readCss };
+// Remove blocos `@media print { ... }` contando chaves.
+function stripPrint(css) {
+  let out = '';
+  let i = 0;
+  const re = /@media[^{]*print[^{]*\{/g;
+  let m;
+  while ((m = re.exec(css))) {
+    out += css.slice(i, m.index);
+    let depth = 1;
+    let j = re.lastIndex;
+    while (depth > 0 && j < css.length) {
+      if (css[j] === '{') depth++;
+      else if (css[j] === '}') depth--;
+      j++;
+    }
+    i = j;
+    re.lastIndex = j;
+  }
+  return out + css.slice(i);
+}
+
+// Valores de uma propriedade (apenas propriedades reais, não custom properties).
+function propValues(css, prop) {
+  const re = new RegExp('(?<![\\w-])' + prop + '\\s*:\\s*([^;}]+)', 'g');
+  return [...css.matchAll(re)].map((m) => m[1].trim());
+}
+const fontSizes = (css) => propValues(css, 'font-size');
+const fontWeights = (css) => propValues(css, 'font-weight');
+const lineHeights = (css) => propValues(css, 'line-height');
+
+// Arquivos com tipografia já migrada para tokens (Tarefas 4 e 5 acrescentam).
+const TYPO_MIGRATED = ['src/styles.css', 'src/app-workspace.css'];
+
+function bodyOf(css) {
+  // ignora o bloco :root, que declara os próprios tokens
+  return css.replace(/:root\s*\{[^}]*\}/g, '');
+}
+
+test('font-size usa tokens, fora de @media print', () => {
+  for (const f of TYPO_MIGRATED) for (const v of fontSizes(bodyOf(stripPrint(readCss(f))))) assert.match(v, /^(var\(--fs-[a-z0-9]+\)|clamp\(var\(--fs-.+\)|inherit|0|100%)$/, `${f}: ${v}`);
+});
+test('font-weight usa tokens', () => {
+  for (const f of TYPO_MIGRATED) for (const v of fontWeights(bodyOf(stripPrint(readCss(f))))) assert.match(v, /^(var\(--fw-[a-z]+\)|inherit)$/, `${f}: ${v}`);
+});
+test('line-height usa tokens (exceto 1, 0 e normal)', () => {
+  for (const f of TYPO_MIGRATED) for (const v of lineHeights(bodyOf(stripPrint(readCss(f))))) assert.match(v, /^(var\(--lh-[a-z]+\)|1|0|normal|inherit)$/, `${f}: ${v}`);
+});
+
+module.exports = { LOADED_CSS, contrast, rootTokens, tok, rootBlock, readCss, stripPrint, fontSizes, fontWeights, lineHeights };

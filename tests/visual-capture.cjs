@@ -81,6 +81,19 @@ const checks = [
           : [];
       }),
   },
+  {
+    // Os cartões visíveis hoje são .ws-metric (workspace.css): a Tarefa 4 deve incluí-los
+    // aqui (hoje estouram 5px em 1440px, ex.: "R$ 480.301,52").
+    name: 'kpi-card',
+    run: (page) =>
+      page.evaluate(() =>
+        [...document.querySelectorAll('.kpi-card')].flatMap((el, i) =>
+          el.scrollWidth > el.clientWidth
+            ? ['.kpi-card #' + (i + 1) + ' scrollWidth ' + el.scrollWidth + ' > clientWidth ' + el.clientWidth]
+            : [],
+        ),
+      ),
+  },
 ];
 
 async function capture(page, label, viewport, violations) {

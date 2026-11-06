@@ -144,34 +144,34 @@ button:hover {
   padding: 0 18px;
 }
 .page-brand h1 {
-  font-size: 29px;
+  font-size: var(--fs-2xl);
   letter-spacing: -1.15px;
-  line-height: 1.13;
+  line-height: var(--lh-tight);
   margin: 0;
-  font-weight: 750;
+  font-weight: var(--fw-bold);
   color: #14354b;
 }
 .page-brand h1 span {
-  font-weight: 400;
+  font-weight: var(--fw-regular);
   color: #6f8593;
   margin: 0 6px;
 }
 .page-brand p {
   margin: 6px 0 0;
-  font-size: 17px;
+  font-size: var(--fs-lg);
   letter-spacing: 0.06px;
-  font-weight: 400;
+  font-weight: var(--fw-regular);
   color: #456174;
 }
 .header-description {
-  font-size: 11px;
-  line-height: 1.6;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
   color: #859198;
   margin: 0 0 0 auto;
 }
 .demo-badge {
-  font-size: 9px;
-  font-weight: 550;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -210,10 +210,10 @@ button:hover {
   background: linear-gradient(180deg, #fcfbf5b5, #fcfcf780);
 }
 .sidebar-caption {
-  font-size: 8px;
+  font-size: var(--fs-2xs);
   letter-spacing: 1.3px;
   color: #9caaa8;
-  font-weight: 650;
+  font-weight: var(--fw-semibold);
   padding: 2px 11px 11px;
 }
 .sidebar nav {
@@ -232,8 +232,8 @@ button:hover {
   border-radius: 7px;
   background: transparent;
   color: #63717c;
-  font-size: 10.4px;
-  font-weight: 450;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
   position: relative;
   white-space: nowrap;
 }
@@ -247,7 +247,7 @@ button:hover {
 .nav-item.active {
   background: #f5f0e0;
   color: #193b53;
-  font-weight: 650;
+  font-weight: var(--fw-semibold);
 }
 .nav-item.active svg {
   color: #2a536b;
@@ -274,13 +274,13 @@ button:hover {
   height: 39px;
 }
 .brand-mark strong {
-  font-size: 13.7px;
-  font-weight: 800;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
   letter-spacing: -0.5px;
 }
 .brand-mark span {
-  font-size: 4.9px;
-  line-height: 1.45;
+  font-size: var(--fs-2xs);
+  line-height: var(--lh-snug);
   display: block;
   color: #506473;
   letter-spacing: 0.1px;
@@ -290,12 +290,14 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  flex-wrap: wrap;
+  text-align: center;
+  gap: var(--space-1) 5px;
   margin-top: 17px;
   border-top: 1px solid #e9ece7;
   padding-top: 11px;
   color: #929c97;
-  font-size: 7.5px;
+  font-size: var(--fs-2xs);
   white-space: nowrap;
 }
 .main-content {
@@ -332,8 +334,8 @@ button:hover {
 }
 .filter-control > div > span {
   display: block;
-  font-size: 8.1px;
-  font-weight: 650;
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-semibold);
   color: #374a5c;
   margin-bottom: 2px;
 }
@@ -343,7 +345,7 @@ button:hover {
   color: #495967;
   appearance: none;
   width: 100%;
-  font-size: 10.5px;
+  font-size: var(--fs-xs);
   height: 17px;
   padding: 0 14px 0 0;
   cursor: pointer;
@@ -369,7 +371,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 10.5px;
+  font-size: var(--fs-xs);
   padding: 12px 21px;
   box-shadow: 0 3px 7px #43729015;
   white-space: nowrap;
@@ -381,17 +383,17 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  font-size: 8.5px;
+  font-size: var(--fs-2xs);
   color: #7b8992;
   padding-right: 8px;
 }
 .update-status > strong {
-  font-weight: 500;
-  font-size: 8.8px;
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-2xs);
   color: #718392;
 }
 .update-status small {
-  font-size: 8px;
+  font-size: var(--fs-2xs);
   display: flex;
   gap: 5px;
   align-items: center;
@@ -419,7 +421,7 @@ button:hover {
   background: #f3f8fb;
   border-radius: 7px;
   color: #5a7b92;
-  font-size: 10px;
+  font-size: var(--fs-xs);
 }
 .active-filter-bar span,
 .active-filter-bar button {
@@ -431,7 +433,7 @@ button:hover {
   background: none;
   color: #426c87;
   padding: 0;
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
 }
 .overview {
   display: flex;
@@ -496,23 +498,24 @@ button:hover {
 }
 .kpi-card > div > span {
   display: block;
-  font-size: 9.5px;
-  font-weight: 550;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
   margin-bottom: 7px;
   white-space: nowrap;
   color: #405164;
 }
 .kpi-card strong {
-  font-size: 23px;
-  line-height: 1.15;
+  font-size: var(--fs-xl);
+  line-height: var(--lh-tight);
   display: block;
   letter-spacing: -0.6px;
   color: #19364d;
-  font-weight: 750;
-  white-space: nowrap;
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
 .kpi-card strong.money-value {
-  font-size: 20px;
+  font-size: var(--fs-xl);
   letter-spacing: -0.7px;
 }
 .kpi-card small {
@@ -520,7 +523,7 @@ button:hover {
   gap: 4px;
   align-items: center;
   margin-top: 5px;
-  font-size: 9px;
+  font-size: var(--fs-xs);
   color: #979293;
   white-space: nowrap;
 }
@@ -576,13 +579,13 @@ button:hover {
 .panel-heading h2 {
   margin: 0;
   color: #293e50;
-  font-size: 12.4px;
-  font-weight: 650;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
   letter-spacing: -0.15px;
-  line-height: 1.3;
+  line-height: var(--lh-snug);
 }
 .panel-hint {
-  font-size: 7px;
+  font-size: var(--fs-2xs);
   color: #9fa9b1;
   border: 1px solid #eef0f1;
   padding: 3px 5px;
@@ -615,7 +618,7 @@ button:hover {
   min-width: 0;
 }
 .regional-label {
-  font-size: 9px;
+  font-size: var(--fs-xs);
   color: #6d7884;
 }
 .regional-bar-track {
@@ -632,7 +635,7 @@ button:hover {
   transition: width 0.4s;
 }
 .regional-value {
-  font-size: 9px;
+  font-size: var(--fs-xs);
   color: #586b7d;
   white-space: nowrap;
   text-align: right;
@@ -644,7 +647,7 @@ button:hover {
   gap: 4px;
   align-items: center;
   color: #a4aeb4;
-  font-size: 7.5px;
+  font-size: var(--fs-2xs);
   margin-top: 13px;
 }
 .collection-funnel {
@@ -692,19 +695,19 @@ button:hover {
   background: #dcf2f1;
 }
 .funnel-step span {
-  font-size: 8.4px;
+  font-size: var(--fs-2xs);
   white-space: nowrap;
 }
 .funnel-step strong {
-  font-size: 13px;
-  font-weight: 750;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
   color: #2d4860;
 }
 .funnel-caption {
   display: flex;
   gap: 6px;
   align-items: center;
-  font-size: 7.5px;
+  font-size: var(--fs-2xs);
   color: #a0aaa8;
   margin: 0 2px;
 }
@@ -748,14 +751,14 @@ button:hover {
 }
 .agreement-item strong {
   display: block;
-  font-size: 13px;
-  font-weight: 750;
-  line-height: 1.1;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
   color: #314d64;
 }
 .agreement-item small {
   display: block;
-  font-size: 8px;
+  font-size: var(--fs-2xs);
   color: #94a0a6;
   margin-top: 2px;
 }
@@ -778,7 +781,7 @@ button:hover {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 9px;
+  font-size: var(--fs-xs);
   color: #6f99b6;
   text-decoration: none;
 }
@@ -791,14 +794,14 @@ button:hover {
 .movement-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 8.5px;
+  font-size: var(--fs-2xs);
   color: #607080;
   white-space: nowrap;
 }
 .movement-table th {
-  font-size: 7.4px;
+  font-size: var(--fs-2xs);
   color: #839099;
-  font-weight: 500;
+  font-weight: var(--fw-medium);
   text-align: left;
   padding: 5px 5px 6px;
   border-bottom: 1px solid #ecefec;
@@ -809,7 +812,7 @@ button:hover {
 }
 .movement-table td:last-child {
   text-align: right;
-  font-size: 8.2px;
+  font-size: var(--fs-2xs);
   font-variant-numeric: tabular-nums;
 }
 .movement-table tr {
@@ -836,7 +839,7 @@ button:hover {
   gap: 5px;
   margin-top: auto;
   padding: 9px 4px 1px;
-  font-size: 7px;
+  font-size: var(--fs-2xs);
   color: #9aa7ac;
 }
 .movements-footer > span {
@@ -849,7 +852,7 @@ button:hover {
   height: 4px;
 }
 .movements-footer .text-link {
-  font-size: 7.5px;
+  font-size: var(--fs-2xs);
 }
 .implementation-plan {
   max-width: 1680px;
@@ -862,19 +865,19 @@ button:hover {
   background: none;
   padding: 0 5px 9px;
   width: 100%;
-  font-size: 11.4px;
+  font-size: var(--fs-sm);
   letter-spacing: 1px;
-  font-weight: 750;
+  font-weight: var(--fw-bold);
   color: #3d5263;
 }
 .plan-heading-right {
   display: flex;
   gap: 8px;
   align-items: center;
-  font-size: 8px;
+  font-size: var(--fs-2xs);
   letter-spacing: 0;
   color: #9caaa9;
-  font-weight: 400;
+  font-weight: var(--fw-regular);
 }
 .plan-heading-right svg {
   transition: transform 0.2s;
@@ -904,9 +907,9 @@ button:hover {
   min-height: 27px;
 }
 .plan-step-title strong {
-  font-size: 7.6px;
-  font-weight: 650;
-  line-height: 1.3;
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
 }
 .plan-number {
   flex-shrink: 0;
@@ -918,8 +921,8 @@ button:hover {
   background: #7ea9c0;
   color: white;
   border-radius: 50%;
-  font-size: 8px;
-  font-weight: 600;
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-semibold);
 }
 .plan-step.done .plan-number {
   background: #6ca292;
@@ -928,14 +931,14 @@ button:hover {
   background: #e7f0f7;
 }
 .plan-step p {
-  font-size: 7.5px;
-  line-height: 1.5;
+  font-size: var(--fs-2xs);
+  line-height: var(--lh-body);
   color: #89979f;
   margin: 7px 9px 6px;
   min-height: 22px;
 }
 .plan-step > small {
-  font-size: 6.7px;
+  font-size: var(--fs-2xs);
   color: #9ca7ad;
   padding: 0 9px;
   display: block;
@@ -947,7 +950,7 @@ button:hover {
   gap: 10px;
   margin: 11px auto 0;
   color: #9ca9ae;
-  font-size: 7.5px;
+  font-size: var(--fs-2xs);
   padding: 0 5px;
 }
 .button {
@@ -960,8 +963,8 @@ button:hover {
   border: 1px solid transparent;
   background: #5b87a5;
   color: white;
-  font-size: 11px;
-  font-weight: 550;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
 }
 .button-secondary {
   background: white;
@@ -985,7 +988,7 @@ button:hover {
 .empty-state {
   padding: 30px 15px;
   text-align: center;
-  font-size: 11px;
+  font-size: var(--fs-sm);
   color: #9ba8ae;
 }
 .mobile-toggle,
@@ -1006,7 +1009,7 @@ button:hover {
   z-index: 100;
   border-radius: 10px;
   box-shadow: 0 8px 40px #142e4225;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   max-width: 90vw;
   animation: toast-in 0.2s ease-out;
 }
@@ -1054,13 +1057,13 @@ button:hover {
   background: white;
 }
 .eyebrow {
-  font-size: 8px;
+  font-size: var(--fs-2xs);
   letter-spacing: 1.5px;
   color: #8a9f9e;
-  font-weight: 650;
+  font-weight: var(--fw-semibold);
 }
 .modal-heading h2 {
-  font-size: 19px;
+  font-size: var(--fs-lg);
   margin: 6px 0 0;
   letter-spacing: -0.5px;
   color: #24485e;
@@ -1083,7 +1086,7 @@ button:hover {
   gap: 7px;
   align-items: center;
   color: #95a5ab;
-  font-size: 9px;
+  font-size: var(--fs-xs);
 }
 .drilldown-summary {
   display: flex;
@@ -1091,7 +1094,7 @@ button:hover {
   gap: 12px;
   padding: 4px 0 18px;
   color: #8a9aa4;
-  font-size: 11px;
+  font-size: var(--fs-sm);
 }
 .drilldown-summary strong {
   color: #3c5d71;
@@ -1102,8 +1105,8 @@ button:hover {
   border-radius: 7px;
   padding: 10px;
   color: #7892a3;
-  font-size: 10px;
-  line-height: 1.6;
+  font-size: var(--fs-xs);
+  line-height: var(--lh-body);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1114,7 +1117,7 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  font-size: 10px;
+  font-size: var(--fs-xs);
   color: #8c9da8;
   margin-bottom: 20px;
 }
@@ -1128,15 +1131,15 @@ button:hover {
   gap: 15px;
 }
 .record-stats > div > span {
-  font-size: 9px;
+  font-size: var(--fs-xs);
   color: #8d9e9f;
   display: block;
   margin-bottom: 7px;
 }
 .record-stats strong {
-  font-size: 17px;
+  font-size: var(--fs-lg);
   color: #32576a;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 .record-fields {
   display: grid;
@@ -1147,17 +1150,17 @@ button:hover {
 .record-fields > div > span {
   display: block;
   color: #9aabb1;
-  font-size: 9px;
+  font-size: var(--fs-xs);
   margin-bottom: 6px;
 }
 .record-fields strong {
-  font-size: 11px;
+  font-size: var(--fs-sm);
   color: #4b6777;
-  font-weight: 550;
+  font-weight: var(--fw-semibold);
 }
 .timeline-title {
-  font-size: 12px;
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
   margin: 6px 0 20px;
   color: #355c72;
 }
@@ -1185,18 +1188,18 @@ button:hover {
 }
 .timeline-item > div > span {
   display: block;
-  font-size: 8px;
+  font-size: var(--fs-2xs);
   color: #94a6ac;
   margin-bottom: 5px;
 }
 .timeline-item strong {
-  font-size: 11px;
-  font-weight: 550;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
 }
 .timeline-item p {
-  font-size: 10px;
+  font-size: var(--fs-xs);
   color: #8b9ba5;
-  line-height: 1.6;
+  line-height: var(--lh-body);
   margin: 6px 0 0;
 }
 .record-source {
@@ -1206,8 +1209,8 @@ button:hover {
   gap: 10px;
   background: #fbf7ee;
   color: #9f9067;
-  font-size: 9px;
-  line-height: 1.6;
+  font-size: var(--fs-xs);
+  line-height: var(--lh-body);
   border-radius: 8px;
 }
 .sr-only {
@@ -1271,7 +1274,7 @@ button:hover {
     width: 165px;
   }
   .nav-item {
-    font-size: 11.5px;
+    font-size: var(--fs-sm);
     min-height: 40px;
   }
   .overview {
@@ -1288,22 +1291,22 @@ button:hover {
     min-height: 103px;
   }
   .kpi-card > div > span {
-    font-size: 10.5px;
+    font-size: var(--fs-xs);
   }
   .kpi-card strong {
-    font-size: 26px;
+    font-size: var(--fs-2xl);
   }
   .kpi-card strong.money-value {
-    font-size: 22px;
+    font-size: var(--fs-xl);
   }
   .kpi-card small {
-    font-size: 10px;
+    font-size: var(--fs-xs);
   }
   .panel {
     padding: 15px 17px;
   }
   .panel-heading h2 {
-    font-size: 13.2px;
+    font-size: var(--fs-md);
   }
   .overview-top > .panel {
     min-height: 232px;
@@ -1318,46 +1321,46 @@ button:hover {
     min-height: 66px;
   }
   .movement-table {
-    font-size: 10px;
+    font-size: var(--fs-xs);
   }
   .movement-table th {
-    font-size: 8.5px;
+    font-size: var(--fs-2xs);
   }
   .movement-table td {
     padding: 8px 6px;
   }
   .movement-table td:last-child {
-    font-size: 9.5px;
+    font-size: var(--fs-xs);
   }
   .agreement-item {
     min-height: 39px;
   }
   .agreement-item strong {
-    font-size: 15px;
+    font-size: var(--fs-md);
   }
   .agreement-item small {
-    font-size: 9px;
+    font-size: var(--fs-xs);
   }
   .regional-row {
     grid-template-columns: 24px 1fr 120px;
   }
   .regional-value {
-    font-size: 10px;
+    font-size: var(--fs-xs);
   }
   .plan-step-title strong {
-    font-size: 8.7px;
+    font-size: var(--fs-2xs);
   }
   .plan-step p {
-    font-size: 8.5px;
+    font-size: var(--fs-2xs);
   }
   .plan-step > small {
-    font-size: 7.5px;
+    font-size: var(--fs-2xs);
   }
   .plan-heading {
-    font-size: 13px;
+    font-size: var(--fs-md);
   }
 }
-@media (max-width: 1190px) {
+@media (max-width: 1200px) {
   .app {
     padding: 15px 12px;
   }
@@ -1366,23 +1369,23 @@ button:hover {
     gap: 20px;
   }
   .page-brand h1 {
-    font-size: 25px;
+    font-size: var(--fs-xl);
   }
   .page-brand p {
-    font-size: 15px;
+    font-size: var(--fs-md);
   }
   .header-description {
-    font-size: 9.5px;
+    font-size: var(--fs-xs);
   }
   .demo-badge {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
   }
   .sidebar {
     width: 129px;
     padding-right: 8px;
   }
   .sidebar-caption {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
     letter-spacing: 1px;
     padding-left: 9px;
   }
@@ -1392,7 +1395,7 @@ button:hover {
   .nav-item {
     gap: 8px;
     padding: 9px 8px;
-    font-size: 9.5px;
+    font-size: var(--fs-xs);
   }
   .nav-item svg {
     width: 16px;
@@ -1405,21 +1408,21 @@ button:hover {
     gap: 7px;
   }
   .filter-control > div > span {
-    font-size: 7.8px;
+    font-size: var(--fs-2xs);
   }
   .refresh-button {
     padding: 12px 14px;
-    font-size: 9px;
+    font-size: var(--fs-xs);
   }
   .update-status {
-    font-size: 7.5px;
+    font-size: var(--fs-2xs);
     padding-right: 1px;
   }
   .update-status > strong {
-    font-size: 7.8px;
+    font-size: var(--fs-2xs);
   }
   .update-status small {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .kpi-card {
     gap: 8px;
@@ -1430,16 +1433,16 @@ button:hover {
     width: 22px;
   }
   .kpi-card > div > span {
-    font-size: 8.3px;
+    font-size: var(--fs-2xs);
   }
   .kpi-card strong {
-    font-size: 20px;
+    font-size: var(--fs-xl);
   }
   .kpi-card strong.money-value {
-    font-size: 17px;
+    font-size: var(--fs-lg);
   }
   .kpi-card small {
-    font-size: 7.4px;
+    font-size: var(--fs-2xs);
   }
   .overview-row {
     gap: 8px;
@@ -1457,7 +1460,7 @@ button:hover {
     padding: 11px 10px;
   }
   .panel-heading h2 {
-    font-size: 10.6px;
+    font-size: var(--fs-xs);
   }
   .panel-hint {
     display: none;
@@ -1467,19 +1470,19 @@ button:hover {
     gap: 6px;
   }
   .regional-value {
-    font-size: 7.8px;
+    font-size: var(--fs-2xs);
   }
   .ranking-note {
-    font-size: 6.5px;
+    font-size: var(--fs-2xs);
   }
   .funnel-step {
     padding: 12px 6px 10px 11px;
   }
   .funnel-step span {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .funnel-step strong {
-    font-size: 11px;
+    font-size: var(--fs-sm);
   }
   .agreement-item {
     gap: 10px;
@@ -1489,19 +1492,19 @@ button:hover {
     width: 19px;
   }
   .agreement-item strong {
-    font-size: 12px;
+    font-size: var(--fs-sm);
   }
   .movement-table {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .movement-table th {
-    font-size: 6.5px;
+    font-size: var(--fs-2xs);
   }
   .movement-table td {
     padding: 7px 3px;
   }
   .movement-table td:last-child {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .plan-grid {
     gap: 5px;
@@ -1511,30 +1514,30 @@ button:hover {
     gap: 4px;
   }
   .plan-step-title strong {
-    font-size: 6.8px;
+    font-size: var(--fs-2xs);
   }
   .plan-step p {
-    font-size: 6.8px;
+    font-size: var(--fs-2xs);
     margin: 7px;
   }
   .plan-step > small {
-    font-size: 6px;
+    font-size: var(--fs-2xs);
     padding: 0 7px;
   }
   .brand-mark strong {
-    font-size: 12px;
+    font-size: var(--fs-sm);
   }
   .brand-mark span {
-    font-size: 4.4px;
+    font-size: var(--fs-2xs);
   }
   .brand-mark svg {
     width: 29px;
   }
   .sidebar-footer {
-    font-size: 6.5px;
+    font-size: var(--fs-2xs);
   }
 }
-@media (max-width: 960px) {
+@media (max-width: 900px) {
   .header-description {
     display: none;
   }
@@ -1580,19 +1583,19 @@ button:hover {
     min-height: 230px;
   }
   .movement-table {
-    font-size: 10px;
+    font-size: var(--fs-xs);
   }
   .movement-table th {
-    font-size: 9px;
+    font-size: var(--fs-xs);
   }
   .movement-table td {
     padding: 9px 6px;
   }
   .movement-table td:last-child {
-    font-size: 10px;
+    font-size: var(--fs-xs);
   }
   .movements-footer {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
   }
   .kpi-grid {
     grid-template-columns: repeat(6, 1fr);
@@ -1607,13 +1610,13 @@ button:hover {
     grid-column: span 3;
   }
   .kpi-card > div > span {
-    font-size: 10px;
+    font-size: var(--fs-xs);
   }
   .kpi-card strong.money-value {
-    font-size: 21px;
+    font-size: var(--fs-xl);
   }
   .kpi-card small {
-    font-size: 9px;
+    font-size: var(--fs-xs);
   }
   .filters-bar {
     flex-wrap: wrap;
@@ -1634,32 +1637,32 @@ button:hover {
     gap: 8px;
   }
   .plan-step-title strong {
-    font-size: 8.5px;
+    font-size: var(--fs-2xs);
   }
   .plan-step p {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
     min-height: 18px;
   }
   .plan-step > small {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .page-footer {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .page-footer > span:last-child {
     display: none;
   }
   .funnel-step span {
-    font-size: 9px;
+    font-size: var(--fs-xs);
   }
   .funnel-step strong {
-    font-size: 13px;
+    font-size: var(--fs-md);
   }
   .panel-heading h2 {
-    font-size: 12px;
+    font-size: var(--fs-sm);
   }
 }
-@media (max-width: 650px) {
+@media (max-width: 600px) {
   body {
     min-width: 360px;
   }
@@ -1673,21 +1676,21 @@ button:hover {
     flex-wrap: wrap;
   }
   .page-brand h1 {
-    font-size: 22px;
+    font-size: var(--fs-xl);
     letter-spacing: -0.85px;
   }
   .page-brand h1 span {
     margin: 0 2px;
   }
   .page-brand p {
-    font-size: 12.8px;
+    font-size: var(--fs-md);
     margin-top: 5px;
   }
   .demo-badge {
     position: absolute;
     top: 77px;
     right: 25px;
-    font-size: 7px;
+    font-size: var(--fs-2xs);
     z-index: 2;
     padding: 5px 7px;
   }
@@ -1731,11 +1734,11 @@ button:hover {
     backdrop-filter: blur(2px);
   }
   .sidebar-caption {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
     margin: 10px 0;
   }
   .nav-item {
-    font-size: 12px;
+    font-size: var(--fs-sm);
     min-height: 42px;
     gap: 13px;
     padding: 10px 13px;
@@ -1744,16 +1747,16 @@ button:hover {
     width: 19px;
   }
   .brand-mark strong {
-    font-size: 18px;
+    font-size: var(--fs-lg);
   }
   .brand-mark svg {
     width: 44px;
   }
   .brand-mark span {
-    font-size: 6px;
+    font-size: var(--fs-2xs);
   }
   .sidebar-footer {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
     margin-top: 20px;
   }
   .filters-bar {
@@ -1768,29 +1771,29 @@ button:hover {
     padding-left: 11px;
   }
   .filter-control > div > span {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
   }
   .filter-control select {
-    font-size: 11px;
+    font-size: var(--fs-sm);
     height: 18px;
   }
   .period-filter {
     max-width: none;
   }
   .refresh-button {
-    font-size: 10px;
+    font-size: var(--fs-xs);
     border-radius: 8px;
     padding: 10px 15px;
   }
   .update-status {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
     gap: 2px;
   }
   .update-status > strong {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
   }
   .update-status small {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .kpi-grid {
     grid-template-columns: 1fr 1fr;
@@ -1813,22 +1816,22 @@ button:hover {
     width: 24px;
   }
   .kpi-card > div > span {
-    font-size: 9px;
+    font-size: var(--fs-xs);
     white-space: normal;
     min-height: 12px;
   }
   .kpi-card strong {
-    font-size: 23px;
+    font-size: var(--fs-xl);
   }
   .kpi-card strong.money-value {
-    font-size: 17.5px;
+    font-size: var(--fs-lg);
   }
   .kpi-card small {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
     white-space: normal;
   }
   .kpi-card:nth-child(5) .money-value {
-    font-size: 23px;
+    font-size: var(--fs-xl);
   }
   .overview {
     gap: 9px;
@@ -1852,17 +1855,17 @@ button:hover {
     gap: 12px;
   }
   .regional-value {
-    font-size: 10px;
+    font-size: var(--fs-xs);
   }
   .ranking-note {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
     margin-top: 15px;
   }
   .panel {
     padding: 13px 14px;
   }
   .panel-heading h2 {
-    font-size: 12px;
+    font-size: var(--fs-sm);
   }
   .overview-middle > .panel {
     min-height: 175px;
@@ -1875,16 +1878,16 @@ button:hover {
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%, 8px 50%);
   }
   .funnel-step span {
-    font-size: 6.5px;
+    font-size: var(--fs-2xs);
   }
   .funnel-step strong {
-    font-size: 10px;
+    font-size: var(--fs-xs);
   }
   .funnel-step.base {
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
   }
   .funnel-caption {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .overview-bottom > .panel {
     min-height: 210px;
@@ -1902,31 +1905,31 @@ button:hover {
     padding: 10px 12px;
   }
   .agreement-item strong {
-    font-size: 16px;
+    font-size: var(--fs-lg);
   }
   .agreement-item small {
-    font-size: 9px;
+    font-size: var(--fs-xs);
   }
   .movement-table {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
   }
   .movement-table th {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .movement-table td {
     padding: 10px 4px;
   }
   .movement-table td:last-child {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
   }
   .movements-footer {
-    font-size: 6.5px;
+    font-size: var(--fs-2xs);
   }
   .movements-footer .text-link {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .plan-heading {
-    font-size: 9px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.6px;
     padding: 0 2px 9px;
   }
@@ -1942,19 +1945,19 @@ button:hover {
     gap: 7px;
   }
   .plan-step-title strong {
-    font-size: 9px;
+    font-size: var(--fs-xs);
   }
   .plan-step p {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
   }
   .plan-step > small {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .page-footer {
     flex-direction: column;
     gap: 5px;
     align-items: center;
-    font-size: 7px;
+    font-size: var(--fs-2xs);
   }
   .detail-modal {
     max-height: 94vh;
@@ -1967,7 +1970,7 @@ button:hover {
     padding: 17px;
   }
   .modal-heading h2 {
-    font-size: 16px;
+    font-size: var(--fs-lg);
   }
   .modal-body {
     padding: 17px 13px;
@@ -1976,43 +1979,43 @@ button:hover {
     padding: 10px 14px;
   }
   .modal-footer > span {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
   }
   .record-stats {
     padding: 13px;
     gap: 9px;
   }
   .record-stats strong {
-    font-size: 13px;
+    font-size: var(--fs-md);
   }
   .record-stats > div > span {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
   }
   .record-fields {
     gap: 18px;
     padding: 20px 3px;
   }
   .drilldown-summary {
-    font-size: 9px;
+    font-size: var(--fs-xs);
   }
   .record-breadcrumb {
-    font-size: 8px;
+    font-size: var(--fs-2xs);
   }
   .toast {
-    font-size: 10px;
+    font-size: var(--fs-xs);
     padding: 12px 14px;
     width: 90vw;
     bottom: 15px;
   }
 }
-@media (max-width: 650px) {
+@media (max-width: 600px) {
   .kpi-card:nth-child(3),
   .kpi-card:nth-child(4) {
     grid-column: 1/-1;
     min-height: 82px;
   }
   .kpi-card:nth-child(3) .money-value {
-    font-size: 23px;
+    font-size: var(--fs-xl);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2099,23 +2102,23 @@ button:hover {
   margin-top: -2px;
 }
 .overview-document-bar > span {
-  font-size: 8px;
+  font-size: var(--fs-2xs);
   letter-spacing: 1.25px;
   color: #8b9eaa;
-  font-weight: 650;
+  font-weight: var(--fw-semibold);
 }
 .record-document-actions {
   display: flex;
   justify-content: flex-end;
   margin: 0 0 23px;
 }
-@media (max-width: 650px) {
+@media (max-width: 600px) {
   .overview-document-bar {
     flex-wrap: wrap;
     gap: 8px;
   }
   .overview-document-bar > span {
-    font-size: 7px;
+    font-size: var(--fs-2xs);
     letter-spacing: 0.8px;
   }
   .record-document-actions {
