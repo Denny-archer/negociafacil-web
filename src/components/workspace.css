@@ -273,6 +273,10 @@
   line-height: var(--lh-body);
   max-width: 190px;
 }
+.ws-table td:first-child {
+  min-width: 260px;
+  max-width: 280px;
+}
 .ws-table tbody tr {
   cursor: pointer;
 }
@@ -292,7 +296,7 @@
   font: inherit;
   border: 0;
   min-width: 190px;
-  max-width: 240px;
+  max-width: 100%;
 }
 .ws-avatar {
   display: flex;
@@ -305,6 +309,14 @@
   color: #9bacc4;
   font-size: var(--fs-xs);
   flex-shrink: 0;
+}
+.ws-entity-button > span:last-child {
+  min-width: 0;
+}
+.ws-entity-button strong,
+.ws-entity-button small {
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 .ws-entity-button strong {
   font-size: var(--fs-sm);

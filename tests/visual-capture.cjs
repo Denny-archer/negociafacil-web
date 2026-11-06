@@ -82,6 +82,21 @@ const checks = [
       }),
   },
   {
+    // O botão da entidade não pode passar da célula (a coluna vizinha o cobriria e cortaria o texto).
+    name: 'ws-entity',
+    run: (page) =>
+      page.evaluate(() =>
+        [...document.querySelectorAll('.ws-entity-button')].flatMap((el, i) => {
+          const cell = el.closest('td');
+          if (!cell) return [];
+          const over = el.getBoundingClientRect().right - cell.getBoundingClientRect().right;
+          return over > 0.5 || el.scrollWidth > el.clientWidth
+            ? ['.ws-entity-button #' + (i + 1) + ' ultrapassa a célula em ' + Math.round(over) + 'px']
+            : [];
+        }),
+      ),
+  },
+  {
     // Cartões de indicadores (.ws-metric, workspace.css): nem o cartão nem o valor podem estourar.
     name: 'ws-metric',
     run: (page) =>
