@@ -15,12 +15,12 @@ interface Props {
 }
 
 const palette = [
-  '#a8cfe9',
-  '#ecc0ce',
-  '#c8bce3',
-  '#b7dcd1',
-  '#f1d7ac',
-  '#b5c7d7',
+  'var(--chart-blue)',
+  'var(--chart-rose)',
+  '#7a6aa8',
+  'var(--chart-mint)',
+  'var(--chart-gold)',
+  'var(--navy)',
 ];
 
 const norm = (value: string) =>
