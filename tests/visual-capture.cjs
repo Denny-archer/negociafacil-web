@@ -124,18 +124,22 @@ const checks = [
   },
   {
     // Tamanho mínimo: nenhum texto visível em tela pode ter fonte computada abaixo de 12px.
-    // Considera só nós de texto de elementos visíveis (offsetParent) e fora de @media print.
+    // Visível = tem caixas de layout, visibility não é hidden e opacity não é 0 (cobre SVG e position: fixed).
+    // Não analisa o conteúdo de @media print, pois a captura é feita em tela.
     name: 'font-min',
     run: (page) =>
       page.evaluate(() => {
         const found = [];
         for (const el of document.querySelectorAll('body *')) {
-          if (!el.offsetParent) continue;
+          if (!el.getClientRects().length) continue;
+          const style = getComputedStyle(el);
+          if (style.visibility === 'hidden' || Number(style.opacity) === 0) continue;
           const own = [...el.childNodes].filter((n) => n.nodeType === 3 && n.textContent.trim());
           if (!own.length) continue;
-          const size = parseFloat(getComputedStyle(el).fontSize);
+          const size = parseFloat(style.fontSize);
           if (size < 12) {
-            const cls = el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/).join('.') : '';
+            const raw = el.getAttribute('class');
+            const cls = raw ? '.' + raw.trim().split(/\s+/).join('.') : '';
             found.push(el.tagName.toLowerCase() + cls + ' "' + own[0].textContent.trim().slice(0, 30) + '" ' + size + 'px');
           }
         }
