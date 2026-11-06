@@ -21,6 +21,9 @@ interface DonutChartProps {
 const numberFormat = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
 const decimalFormat = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1 });
 const moneyFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+// Deslocamentos dos rótulos SVG (texto de 12px): centralização vertical no tick e distância da base do viewBox.
+const AXIS_LABEL_DY = 4;
+const MONTH_LABEL_OFFSET = 4;
 const finiteValue = (value: number) => (Number.isFinite(value) ? Math.max(0, value) : 0);
 
 function axisValue(value: number, money: boolean) {
@@ -62,8 +65,8 @@ export function ComboChart({ data, mode, onSelect, firstSeriesLabel, singleSerie
   const money = mode === 'money';
   const firstLabel = firstSeriesLabel || (money ? 'Arrecadação' : 'Total de inscritos');
   const secondLabel = money ? 'Valor em aberto' : 'Inadimplentes';
-  const firstColor = money ? '#9bd3bd' : '#b8dcf4';
-  const secondColor = '#e8a9c3';
+  const firstColor = money ? 'var(--chart-mint)' : 'var(--chart-blue)';
+  const secondColor = 'var(--chart-rose)';
 
   useEffect(() => {
     const element = container.current;
@@ -82,10 +85,10 @@ export function ComboChart({ data, mode, onSelect, firstSeriesLabel, singleSerie
   }));
   const hasData = values.some((point) => point.first > 0 || point.second > 0 || point.rate > 0);
   const height = money ? 130 : 150;
-  const left = money ? 58 : 43;
-  const right = 33;
+  const left = money ? 80 : 52;
+  const right = 40;
   const top = 12;
-  const bottom = 25;
+  const bottom = 28;
   const plotWidth = Math.max(1, width - left - right);
   const plotHeight = height - top - bottom;
   const scale = scaleFor(Math.max(0, ...values.flatMap((point) => [point.first, point.second])));
@@ -98,8 +101,8 @@ export function ComboChart({ data, mode, onSelect, firstSeriesLabel, singleSerie
   const active = activeIndex === null ? undefined : data[activeIndex];
   const activeValues = activeIndex === null ? undefined : values[activeIndex];
   const format = (value: number) => (money ? moneyFormat.format(value) : numberFormat.format(value));
-  const labelEvery = data.length > 0 && cell < 21 ? Math.ceil(21 / cell) : 1;
-  const tooltipWidth = 176;
+  const labelEvery = data.length > 0 && cell < 28 ? Math.ceil(28 / cell) : 1;
+  const tooltipWidth = 208;
   const tooltipLeft = activeIndex === null ? 0 : Math.max(4, Math.min(width - tooltipWidth - 4, left + cell * (activeIndex + 0.5) - tooltipWidth / 2));
 
   return (
@@ -114,16 +117,16 @@ export function ComboChart({ data, mode, onSelect, firstSeriesLabel, singleSerie
         <div className="chart-plot" style={{ height }} onMouseLeave={() => setActiveIndex(null)}>
           <svg className="chart-svg" viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
             <defs>
-              <linearGradient id={`${paintId}-first`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={firstColor} stopOpacity="0.75" /><stop offset="100%" stopColor={firstColor} /></linearGradient>
-              <linearGradient id={`${paintId}-second`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={secondColor} stopOpacity="0.8" /><stop offset="100%" stopColor={secondColor} /></linearGradient>
+              <linearGradient id={`${paintId}-first`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" style={{ stopColor: firstColor }} stopOpacity="0.75" /><stop offset="100%" style={{ stopColor: firstColor }} /></linearGradient>
+              <linearGradient id={`${paintId}-second`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" style={{ stopColor: secondColor }} stopOpacity="0.8" /><stop offset="100%" style={{ stopColor: secondColor }} /></linearGradient>
             </defs>
             {scale.ticks.map((tick) => (
               <g key={tick}>
                 <line className="chart-grid" x1={left} x2={width - right} y1={yValue(tick)} y2={yValue(tick)} />
-                <text className="chart-axis" x={left - 8} y={yValue(tick) + 3} textAnchor="end">{axisValue(tick, money)}</text>
+                <text className="chart-axis" x={left - 8} y={yValue(tick) + AXIS_LABEL_DY} textAnchor="end">{axisValue(tick, money)}</text>
               </g>
             ))}
-            {!singleSeries && rateScale.ticks.map((tick) => <text className="chart-axis" key={tick} x={width - right + 8} y={yRate(tick) + 3}>{decimalFormat.format(tick)}%</text>)}
+            {!singleSeries && rateScale.ticks.map((tick) => <text className="chart-axis" key={tick} x={width - right + 8} y={yRate(tick) + AXIS_LABEL_DY}>{decimalFormat.format(tick)}%</text>)}
             <line className="chart-baseline" x1={left} x2={width - right} y1={top + plotHeight} y2={top + plotHeight} />
             {values.map((point, index) => {
               const centerX = left + cell * (index + 0.5);
@@ -132,7 +135,7 @@ export function ComboChart({ data, mode, onSelect, firstSeriesLabel, singleSerie
                   {activeIndex === index && <rect className="chart-active-column" x={left + cell * index} y={top} width={cell} height={plotHeight} rx="3" />}
                   <rect x={singleSeries ? centerX - barWidth : centerX - barWidth - 1.5} y={yValue(point.first)} width={singleSeries ? barWidth * 2 : barWidth} height={Math.max(0, plotHeight * point.first / scale.max)} fill={`url(#${paintId}-first)`} rx="1.4" />
                   {!singleSeries && <rect x={centerX + 1.5} y={yValue(point.second)} width={barWidth} height={Math.max(0, plotHeight * point.second / scale.max)} fill={`url(#${paintId}-second)`} rx="1.4" />}
-                  {index % labelEvery === 0 && <text className="chart-axis chart-month" x={centerX} y={height - 7} textAnchor="middle">{data[index].label}</text>}
+                  {index % labelEvery === 0 && <text className="chart-axis chart-month" x={centerX} y={height - MONTH_LABEL_OFFSET} textAnchor="middle">{data[index].label}</text>}
                 </g>
               );
             })}

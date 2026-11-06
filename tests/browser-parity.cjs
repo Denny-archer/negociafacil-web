@@ -202,6 +202,9 @@ async function pixelDifference(page, buffers) {
   );
 }
 
+// Opt-in: PARITY_SKIP_PIXELS=1 ignora só a comparação de pixels (mudança visual intencional).
+const skipPixels = process.env.PARITY_SKIP_PIXELS === '1';
+
 async function main() {
   const hosts = roots.map((root, i) => ({ root, url: 'http://build-' + i + '.local/' }));
   let browser;
@@ -229,9 +232,13 @@ async function main() {
             return page.screenshot({ fullPage: true, animations: 'disabled' });
           })
         );
-        const difference = buffers[0].equals(buffers[1]) ? 0 : await pixelDifference(pages[0], buffers);
-        assert.equal(difference, 0, view + ' em ' + viewport.width + ' px');
-        console.log('visual', viewport.width, view, '0 pixels diferentes');
+        if (skipPixels) {
+          console.log('visual', viewport.width, view, 'comparação de pixels ignorada (PARITY_SKIP_PIXELS=1)');
+        } else {
+          const difference = buffers[0].equals(buffers[1]) ? 0 : await pixelDifference(pages[0], buffers);
+          assert.equal(difference, 0, view + ' em ' + viewport.width + ' px');
+          console.log('visual', viewport.width, view, '0 pixels diferentes');
+        }
       }
       if (viewport.width === 390) {
         for (const page of pages) {

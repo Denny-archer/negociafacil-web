@@ -29,7 +29,7 @@ const ownerColumn: TableColumn = {
 const actionColumn: TableColumn = {
   label: 'Próxima ação',
   render: (row) => (
-    <span className={`ws-cell-text ${!row.nextAction && !value(row, 'waitReason') ? 'ws-missing' : ''}`}>
+    <span className={`ws-cell-text ws-cell-action ${!row.nextAction && !value(row, 'waitReason') ? 'ws-missing' : ''}`}>
       {row.nextAction ||
         (value(row, 'waitReason') ? `Aguardando · ${value(row, 'waitReason')}` : 'Sem próxima ação')}
     </span>
