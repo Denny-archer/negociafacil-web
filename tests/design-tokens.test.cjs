@@ -177,4 +177,44 @@ test('texto de status/neutro atinge contraste sobre o fundo literal da regra', (
   }
 });
 
+// Texto branco: cada fundo hex (inclusive paradas de gradiente) das regras permitidas, e variantes
+// descendentes/:hover/:active, precisa dar >= 4.5:1 contra #fff.
+test('fundos atrás de texto branco atingem 4.5:1 contra #fff', () => {
+  const stops = (v) => [...v.matchAll(/#[0-9a-f]{6}\b/gi)].map((m) => m[0]);
+  let checked = 0;
+  for (const f of LOADED_CSS) {
+    for (const [sel, body] of rulesOf(readCss(f))) {
+      const hits = sel.split(',').some((s) => WHITE_ALLOWED.some((a) => new RegExp('(^|[\\s>])' + a.replace(/\./g, '\\.') + '(:[\\w-]+)*$').test(s.trim())));
+      if (!hits) continue;
+      for (const v of propValues(body, 'background').concat(propValues(body, 'background-color'))) {
+        for (const hex of stops(v)) {
+          checked++;
+          assert.ok(contrast('#ffffff', hex) >= 4.5, `${f}: ${sel} fundo ${hex} = ${contrast('#ffffff', hex).toFixed(2)} contra branco`);
+        }
+      }
+    }
+  }
+  assert.ok(checked >= 4, 'esperava fundos de .button/.refresh-button/.plan-number');
+});
+
+// Pares texto sobre fundo herdado do pai (o fundo não está na regra do texto).
+const PARENT_PAIRS = [
+  ['--success-text', '#f1f8f5'], // .ws-detail-values strong
+  ['--success-text', '#f0f7f3'], // .ws-comparison-change span/strong
+  ['--text-strong', '#e4eff9'], ['--text-secondary', '#e4eff9'], // .funnel-step
+  ['--text-muted', '#f1f8f5'], ['--text-muted', '#f0f7f3'],
+];
+test('pares de texto sobre fundo do pai atingem 4.5:1', () => {
+  for (const [fg, bg] of PARENT_PAIRS) assert.ok(contrast(tok(fg), bg) >= 4.5, `${fg} sobre ${bg}`);
+});
+
+test('nav-item hover/ativo usa --text-strong', () => {
+  const css = readCss('src/styles.css');
+  for (const sel of ['\\.nav-item:hover', '\\.nav-item\\.active', '\\.nav-item\\.active svg']) {
+    const m = css.match(new RegExp(sel + '\\s*\\{([^}]*)\\}'));
+    assert.ok(m, sel);
+    assert.match(m[1], /color:\s*var\(--text-strong\)/, sel);
+  }
+});
+
 module.exports = { LOADED_CSS, contrast, rootTokens, tok, rootBlock, readCss, stripPrint, fontSizes, fontWeights, lineHeights };

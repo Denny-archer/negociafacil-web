@@ -242,15 +242,15 @@ button:hover {
 }
 .nav-item:hover {
   background: #f0f3ef;
-  color: var(--text-secondary);
+  color: var(--text-strong);
 }
 .nav-item.active {
   background: #f5f0e0;
-  color: var(--text-secondary);
+  color: var(--text-strong);
   font-weight: var(--fw-semibold);
 }
 .nav-item.active svg {
-  color: var(--text-secondary);
+  color: var(--text-strong);
 }
 .nav-active-dot {
   height: 4px;
@@ -365,7 +365,7 @@ button:hover {
 }
 .refresh-button {
   border-radius: 12px;
-  background: linear-gradient(110deg, #6c96b4, #537f9e);
+  background: linear-gradient(110deg, #3a6d8c, #2f6483);
   display: flex;
   gap: 8px;
   align-items: center;
@@ -918,14 +918,14 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #7ea9c0;
+  background: #3a6d8c;
   color: white;
   border-radius: 50%;
   font-size: var(--fs-2xs);
   font-weight: var(--fw-semibold);
 }
 .plan-step.done .plan-number {
-  background: #6ca292;
+  background: #2f7566;
 }
 .plan-step.current .plan-step-title {
   background: #e7f0f7;
@@ -961,7 +961,7 @@ button:hover {
   padding: 9px 15px;
   border-radius: 7px;
   border: 1px solid transparent;
-  background: #5b87a5;
+  background: #3a6d8c;
   color: white;
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
