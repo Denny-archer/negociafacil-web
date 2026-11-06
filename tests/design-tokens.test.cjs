@@ -134,4 +134,47 @@ test('fill de texto de gráfico usa token', () => {
   }
 });
 
+// Seletores onde `color: #fff`/`white` é permitido: fundo navy ou de status escuro.
+const WHITE_ALLOWED = ['.refresh-button', '.plan-number', '.button', '.toast', '.toast svg'];
+
+// Regras (seletor, corpo) de um CSS já sem :root e sem @media print.
+function rulesOf(css) {
+  const out = [];
+  for (const m of bodyOf(stripPrint(css)).matchAll(/([^{}@;]+)\{([^{}]*)\}/g)) {
+    out.push([m[1].replace(/\/\*[\s\S]*?\*\//g, '').trim().replace(/\s+/g, ' '), m[2]]);
+  }
+  return out;
+}
+
+test('color usa tokens (var/inherit/currentColor), fora de :root e @media print', () => {
+  for (const f of LOADED_CSS) {
+    for (const [sel, body] of rulesOf(readCss(f))) {
+      for (const raw of propValues(body, 'color')) {
+        const v = raw.replace(/\s*!important$/, '');
+        if (/^(var\(--[\w-]+\)|inherit|currentColor)$/.test(v)) continue;
+        if (/^(#fff|#ffffff|white)$/i.test(v)) {
+          assert.ok(sel.split(',').every((s) => WHITE_ALLOWED.includes(s.trim())), `${f}: ${sel} usa branco fora da lista`);
+          continue;
+        }
+        assert.fail(`${f}: ${sel} { color: ${raw} }`);
+      }
+    }
+  }
+});
+
+// Cor de texto sobre o fundo literal da própria regra (chips tingidos): >= 4.5 (texto) ou 3 (ícones --chart-*).
+test('texto de status/neutro atinge contraste sobre o fundo literal da regra', () => {
+  for (const f of LOADED_CSS) {
+    for (const [sel, body] of rulesOf(readCss(f))) {
+      const bgs = propValues(body, 'background').concat(propValues(body, 'background-color'));
+      const bg = bgs.map((b) => b.match(/^#[0-9a-f]{6}$/i)).find(Boolean);
+      const fg = propValues(body, 'color').map((v) => v.replace(/\s*!important$/, '').match(/^var\((--[\w-]+)\)$/)).find(Boolean);
+      if (!bg || !fg) continue;
+      const min = fg[1].startsWith('--chart-') ? 3 : 4.5;
+      const ratio = contrast(tok(fg[1]), bg[0]);
+      assert.ok(ratio >= min, `${f}: ${sel} ${fg[1]} sobre ${bg[0]} = ${ratio.toFixed(2)} (< ${min})`);
+    }
+  }
+});
+
 module.exports = { LOADED_CSS, contrast, rootTokens, tok, rootBlock, readCss, stripPrint, fontSizes, fontWeights, lineHeights };
