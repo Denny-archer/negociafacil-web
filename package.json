@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "test": "node --test tests/domain.test.cjs",
+    "test": "node --test tests/domain.test.cjs tests/design-tokens.test.cjs",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc --noEmit -p tsconfig.json",

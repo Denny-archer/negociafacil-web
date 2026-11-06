@@ -1,18 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700;750;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/*
+ * Breakpoints canônicos (media queries não aceitam variáveis):
+ *   600px · 900px · 1200px · min-width: 1500px
+ * Mapeamento legado: 640/650 -> 600, 960 -> 900, 1100/1190 -> 1200.
+ */
 
 :root {
   font-family: 'Inter', 'Segoe UI', sans-serif;
-  color: #183047;
-  background: #f5f5f0;
+  color: var(--text-strong);
+  background: var(--surface-page);
   font-synthesis: none;
-  font-weight: 400;
-  font-size: 12px;
+  font-weight: var(--fw-regular);
+
+  /* Escala tipográfica (base 16px) */
+  --fs-2xs: 0.75rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2rem;
+
+  /* Pesos e entrelinhas */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --lh-tight: 1.2;
+  --lh-snug: 1.35;
+  --lh-body: 1.5;
+
+  /* Texto */
+  --text-strong: #183047;
+  --text-secondary: #495967;
+  --text-muted: #5a6670;
+
+  /* Superfícies e bordas */
+  --surface-page: #f5f5f0;
+  --surface-card: #ffffff;
+  --surface-subtle: #edf1f5;
+  --border: #eaece9;
+  --border-strong: #c8cfcc;
+
+  /* Status (texto) */
+  --success-text: #2f7566;
+  --danger-text: #a33a33;
+  --warning-text: #8a5a1c;
+  --info-text: #3a6d8c;
+  --accent-text: #9b4f72;
+
+  /* Gráficos e ícones (>= 3:1 sobre o card) */
+  --chart-blue: #5c8ead;
+  --chart-mint: #3f8a79;
+  --chart-rose: #b0708f;
+  --chart-gold: #a8742f;
   --navy: #193b53;
-  --muted: #78848b;
-  --line: #eaece9;
-  --blue: #5c8ead;
-  --mint: #4d9f8c;
-  --rose: #c28ca6;
+
+  /* Aliases legados */
+  --blue: var(--chart-blue);
+  --mint: var(--chart-mint);
+  --rose: var(--chart-rose);
+  --muted: var(--text-muted);
+  --line: var(--border);
+
+  /* Espaçamento */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+}
+html {
+  font-size: 100%;
 }
 * {
   box-sizing: border-box;
@@ -20,6 +82,9 @@
 body {
   margin: 0;
   min-width: 360px;
+  color: var(--text-strong);
+  background: var(--surface-page);
+  line-height: var(--lh-body);
 }
 button,
 input,
