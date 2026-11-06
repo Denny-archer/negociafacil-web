@@ -109,12 +109,34 @@ const checks = [
             const r = el.getBoundingClientRect();
             if (!r.width) continue;
             const over = Math.max(r.right - box.right, box.left - r.left);
-            if (over <= 0.5 && el.scrollWidth <= el.clientWidth + 0.5) continue;
+            if (over <= 0.5) continue;
             const key = (el.getAttribute('class') || el.tagName.toLowerCase()) + ': "' + el.textContent.trim().slice(0, 40) + '"';
             found.set(key, Math.max(found.get(key) || 0, Math.round(over)));
           }
         }
         return [...found].map(([key, over]) => 'conteúdo passa da célula (' + over + 'px) — ' + key);
+      }),
+  },
+  {
+    // Nenhuma palavra de tabela pode ser partida entre linhas (ex.: "21/09/20" + "26", "informad" + "o").
+    // Quebras em hífen/travessão são aceitáveis, então o texto é dividido também nesses caracteres.
+    name: 'mid-word',
+    run: (page) =>
+      page.evaluate(() => {
+        const found = new Set();
+        const walker = document.createTreeWalker(document.querySelector('main') || document.body, NodeFilter.SHOW_TEXT);
+        for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+          if (!node.parentElement.closest('td, th')) continue;
+          const word = /[^\s\-–—]{2,}/g;
+          for (let m = word.exec(node.data); m; m = word.exec(node.data)) {
+            const range = document.createRange();
+            range.setStart(node, m.index);
+            range.setEnd(node, m.index + m[0].length);
+            const tops = new Set([...range.getClientRects()].filter((r) => r.width).map((r) => Math.round(r.top)));
+            if (tops.size > 1) found.add('"' + m[0] + '"');
+          }
+        }
+        return [...found].slice(0, 15).map((w) => 'palavra partida entre linhas: ' + w);
       }),
   },
   {

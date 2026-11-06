@@ -387,7 +387,7 @@
   display: block;
   min-width: 85px;
   max-width: 180px;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 .ws-table td:has(> .ws-cell-action) {
   max-width: none;
@@ -404,7 +404,6 @@
 }
 .ws-chip {
   display: inline-flex;
-  align-items: center;
   gap: 5px;
   font-size: var(--fs-2xs);
   padding: 4px 7px;
@@ -429,7 +428,7 @@
   flex-shrink: 0;
 }
 /* Coluna de status: largura para rótulos de até duas linhas sem espremer. */
-.ws-table td:has(.ws-chip) {
+.ws-table td:has(> .ws-chip) {
   min-width: 13rem;
   max-width: 16rem;
 }
@@ -1520,9 +1519,10 @@
   outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
 }
+/* break-word (e não anywhere): não reduz a largura mínima da coluna, então palavras e datas não se partem. */
 .ws-table td,
 .ws-entity-button > span:last-child {
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 .ws-local-filter select:disabled {
   color: var(--text-muted);
@@ -1598,7 +1598,7 @@
   }
   .ws-table td,
   .ws-table th {
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
   }
 }
 .ws-page-heading .ws-reference-date {
