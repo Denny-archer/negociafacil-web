@@ -51,7 +51,7 @@
 
 ---
 
-### Tarefa 1: Script de prints e baseline "antes"
+### Task 1: Script de prints e baseline "antes"
 
 **Arquivos:**
 - Criar: `tests/visual-capture.cjs`
@@ -65,7 +65,7 @@
 - [ ] **Passo 2:** gerar o baseline no estado atual. Rodar `npm run build && cp -r dist /tmp/dist-antes && PLAYWRIGHT_MODULE=$(ls -d ~/.npm/_npx/*/node_modules/playwright | head -1) npm run capture -- dist docs/plans/capturas/antes`. Esperado: 22 PNGs. Falhas de `scrollWidth` neste passo são **apenas registradas** (são o baseline) e listadas no commit.
 - [ ] **Passo 3:** commit `test(design): script de captura visual por view e viewport`.
 
-### Tarefa 2: Tokens, base 16px e teste de regras de design
+### Task 2: Tokens, base 16px e teste de regras de design
 
 **Arquivos:**
 - Criar: `tests/design-tokens.test.cjs`
@@ -99,7 +99,7 @@ test('modules.css não existe', () => assert.equal(fs.existsSync('src/components
 - [ ] **Passo 4:** rodar `npm run check`. Esperado: PASS (32 + 5 testes).
 - [ ] **Passo 5:** commit `style(design): tokens de tipografia, cor e espaçamento; base 16px`.
 
-### Tarefa 3: Migrar a tipografia de `styles.css` e `app-workspace.css` (shell, cards, filtros)
+### Task 3: Migrar a tipografia de `styles.css` e `app-workspace.css` (shell, cards, filtros)
 
 **Arquivos:**
 - Modificar: `src/styles.css`, `src/app-workspace.css`
@@ -123,7 +123,7 @@ test('font-weight usa tokens', () => { /* idem com /^var\(--fw-/ ou inherit */ }
 - [ ] **Passo 5:** `npm run check`, depois `npm run build`, depois a captura em `docs/plans/capturas/depois`. Esperado: testes PASS, sem estouro horizontal em overview, delinquency e settings a 390px. Comparar visualmente com `antes/`.
 - [ ] **Passo 6:** commit `style(design): tipografia do shell, cards e filtros em tokens`.
 
-### Tarefa 4: Migrar `workspace.css` (tabelas, grupos, diálogo de registro)
+### Task 4: Migrar `workspace.css` (tabelas, grupos, diálogo de registro)
 
 **Arquivos:** modificar `src/components/workspace.css` e `tests/design-tokens.test.cjs` (acrescentar o arquivo a `TYPO_MIGRATED`).
 
@@ -132,7 +132,7 @@ test('font-weight usa tokens', () => { /* idem com /^var\(--fw-/ ou inherit */ }
 - [ ] **Passo 3:** `npm run check`, build, captura. Esperado: PASS; nas views demands, collection, negotiation, active-debt, protest e payments a 390px, a tabela rola e a página não.
 - [ ] **Passo 4:** commit `style(design): tabelas e workspace legíveis com rolagem horizontal`.
 
-### Tarefa 5: Gráficos e ações de documento (`charts.css`, `document-actions.css`, `Charts.tsx`)
+### Task 5: Gráficos e ações de documento (`charts.css`, `document-actions.css`, `Charts.tsx`)
 
 **Arquivos:** modificar `src/components/charts.css`, `src/components/document-actions.css`, `src/components/Charts.tsx:123-135` e `tests/design-tokens.test.cjs`.
 
@@ -141,7 +141,7 @@ test('font-weight usa tokens', () => { /* idem com /^var\(--fw-/ ou inherit */ }
 - [ ] **Passo 3:** `npm run check`, build, captura. Esperado: PASS; rótulos dos eixos inteiros e legíveis em overview e reports (Review Focus 3).
 - [ ] **Passo 4:** commit `style(design): gráficos e ações de documento com tipografia e cores acessíveis`.
 
-### Tarefa 6: Cores de texto em tokens (todos os CSS carregados)
+### Task 6: Cores de texto em tokens (todos os CSS carregados)
 
 **Arquivos:** modificar os 5 CSS carregados e `tests/design-tokens.test.cjs`.
 
@@ -150,7 +150,7 @@ test('font-weight usa tokens', () => { /* idem com /^var\(--fw-/ ou inherit */ }
 - [ ] **Passo 3:** `npm run check`, build, captura. Esperado: PASS; nas capturas, a hierarquia de cor está preservada e os textos claros (`#9aabb9`, `#7892a3`) sumiram.
 - [ ] **Passo 4:** commit `style(design): cores de texto via tokens com contraste AA`.
 
-### Tarefa 7: Verificação final
+### Task 7: Verificação final
 
 - [ ] **Passo 1:** `npm run check`. Esperado: todos os testes PASS.
 - [ ] **Passo 2:** `npm run build && PLAYWRIGHT_MODULE=… npm run test:parity -- /tmp/dist-antes dist`. Esperado: PASS. Os comportamentos são idênticos; só o visual mudou.
